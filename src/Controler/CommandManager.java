@@ -1,9 +1,11 @@
 package Controler;
 
-import Controler.Commands.Command;
+import Controler.Commands.*;
 
 import java.util.HashMap;
+
 import DAO.*;
+import Controler.*;
 
 public class CommandManager {
     private HashMap<String, Command> commands;
@@ -19,11 +21,11 @@ public class CommandManager {
         commands.put("clear", new ClearCommand(ioManager));
         commands.put("save", new SaveCommand(ioManager));
         commands.put("execute_script", new ExecuteScriptCommand(ioManager));
-        commands.put("add_if_min", new AddIfMinCommand(ioManager, shellPersonParametrs));
-        commands.put("remove_greater", new RemoveGreaterCommand(ioManager, shellPersonParametrs));
-        commands.put("group_counting_by_id", new GroupCountingByIdCommand(ioManager));
-        commands.put("filter_starts_with_name", new FilterStartsWithNameCommand(ioManager, shellPersonParametrs));
-        commands.put("print_unique_location", new PrintUniqueLocationCommand(ioManager, shellPersonParametrs));
+        commands.put("add_if_min", new HeadCommand(ioManager, shellPersonParametrs));
+        commands.put("remove_greater", new RemoveHeadCommand(ioManager, shellPersonParametrs));
+        commands.put("group_counting_by_name", new GroupCountingByNameCommand(ioManager));
+        commands.put("filter_greater_than_height", new FilterGreaterThanHeightCommand(ioManager, shellPersonParametrs));
+        commands.put("print_less_than_location", new FilterLessThanLocationCommand(ioManager, shellPersonParametrs));
         commands.put("exit", new ExitCommand());
     }
 
