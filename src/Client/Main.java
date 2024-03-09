@@ -6,10 +6,12 @@ import DAO.IOManager;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Scanner;
 
 public class Main {
+    Scanner userScanner = new Scanner(System.in);
     public static Queue<String> scriptLines = new LinkedList<String>();
-    ShellPersonParametrs shellPersonParametrs = new ShellPersonParametrs();
+    ShellPersonParametrs shellPersonParametrs = new ShellPersonParametrs(userScanner);
     IOManager ioManager = new IOManager();
     CommandManager commandManager = new CommandManager(ioManager,shellPersonParametrs);
 
