@@ -2,21 +2,16 @@ package Controler;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Scanner;
 import Client.*;
 public class ScriptShell {
     private CommandManager commandManager;
     private String scriptpath;
-    public ScriptShell(CommandManager commandManager){
+    public ScriptShell(CommandManager commandManager, String scriptpath){
         this.commandManager = commandManager;
-    }
-
-    public ScriptShell(String scriptpath) {
         this.scriptpath = scriptpath;
     }
+
     public void start(){
         File scriptFile = new File(scriptpath);
         Scanner scriptScanner = null;

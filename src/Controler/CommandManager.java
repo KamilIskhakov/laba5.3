@@ -25,7 +25,6 @@ public class CommandManager {
         commands.put("filter_starts_with_name", new FilterStartsWithNameCommand(ioManager, shellPersonParametrs));
         commands.put("print_unique_location", new PrintUniqueLocationCommand(ioManager, shellPersonParametrs));
         commands.put("exit", new ExitCommand());
-        this.script = script;
     }
 
     public void execute(String commandName, String arguments) {
