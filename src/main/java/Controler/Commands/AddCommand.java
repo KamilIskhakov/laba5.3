@@ -14,40 +14,17 @@ public class AddCommand implements Command {
     }
     @Override
     public String getDescription() {
-        return "lolkekazaza";
+        return getName() + "добавляет новый объект в конец коллекции";
     }
 
     @Override
     public String getName() {
-        return "sss";
+        return "add ";
     }
 
     @Override
     public void execute(String argument) {
-        if (Main.script){
-            Person per = new Person(
-                    shellPersonParametrs.askNameScript(),
-                    shellPersonParametrs.askCoordinatesScript(),
-                    shellPersonParametrs.askHeightScript(),
-                    shellPersonParametrs.askWeightScript(),
-                    shellPersonParametrs.askColorScript(),
-                    shellPersonParametrs.askCountryScript(),
-                    shellPersonParametrs.askLocationScript());
-            per.setId(ioManager.generateId());
-            ioManager.addToCollection(per);
-        }
-        else {
-            Person per = new Person(
-                    shellPersonParametrs.askNameConsole(),
-                    shellPersonParametrs.askCoordinatesConsole(),
-                    shellPersonParametrs.askHeightConsole(),
-                    shellPersonParametrs.askWeightConsole(),
-                    shellPersonParametrs.askColorConsole(),
-                    shellPersonParametrs.askCountryConsole(),
-                    shellPersonParametrs.askLocationConsole()
-            );
-            per.setId(ioManager.generateId());
-            ioManager.addToCollection(per);
-        }
+        Person person = new PersonCreateHelper(ioManager,shellPersonParametrs).createPeople();
+        ioManager.addToCollection(person);
     }
 }

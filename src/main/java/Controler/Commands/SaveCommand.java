@@ -9,12 +9,12 @@ public class SaveCommand implements Command{
     }
     @Override
     public String getDescription() {
-        return null;
+        return getName() + "сохраняет все изменения в коллекции";
     }
 
     @Override
     public String getName() {
-        return null;
+        return "save ";
     }
 
     @Override

@@ -9,12 +9,12 @@ public class InfoCommand implements Command{
     }
     @Override
     public String getDescription() {
-        return null;
+        return getName() + "вывести информацию о коллекции";
     }
 
     @Override
     public String getName() {
-        return null;
+        return "info ";
     }
 
     @Override

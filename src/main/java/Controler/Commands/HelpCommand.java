@@ -1,22 +1,35 @@
 package Controler.Commands;
 
+import Controler.CommandManager;
+import Controler.ShellPersonParametrs;
+import DAO.IOManager;
+
+import java.util.HashMap;
+
 public class HelpCommand implements Command{
-    public HelpCommand() {
-        System.out.println("help – вывести справку по доступным командам");
+    private IOManager ioManager;
+    private ShellPersonParametrs shellPersonParametrs;
+    public HelpCommand(IOManager ioManager, ShellPersonParametrs shellPersonParametrs) {
+        this.ioManager = ioManager;
+        this.shellPersonParametrs = shellPersonParametrs;
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return getName() + "вывести справку по доступным командам";
     }
 
     @Override
     public String getName() {
-        return null;
+        return "help ";
     }
 
     @Override
     public void execute(String argument) {
-        System.out.println("дошел до данной части и выполнил");
+        HashMap<String,Command> com = new CommandManager(ioManager,shellPersonParametrs).getHashMap();
+        for (String command : com.keySet()){
+            Command item = com.get(command);
+            System.out.println(item.getDescription());
+        }
     }
 }

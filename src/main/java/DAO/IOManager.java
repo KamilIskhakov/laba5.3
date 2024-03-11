@@ -1,6 +1,7 @@
 package DAO;
 
 import CollectionObjects.Person;
+import Controler.Commands.AddCommand;
 import Service.ToXML;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
@@ -20,18 +21,27 @@ public class IOManager {
 
     public IOManager() {
     }
+    public ArrayDeque<Person> getCollection(){
+        return personcollection;
+    }
     public void setFilePath(String filePath) {
         this.filePath = filePath;
+    }
+    public void setPersonCollection(ArrayDeque<Person> people){
+        personcollection = people;
     }
 
     public void addToCollection(Person person) {
         personcollection.add(person);
     }
 
-    public void updateCollectionById(Integer id){
+    public void removeCollectionById(Integer id){
         for(Person person : personcollection)
                 if(Objects.equals(person.getId(), id))
                     personcollection.remove(person);
+    }
+    public void removeHead(){
+        personcollection.poll();
     }
 
     public void save() {
