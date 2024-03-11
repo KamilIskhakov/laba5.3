@@ -37,6 +37,7 @@ public class CommandManager {
             System.out.println("Введите команду: ");
         } catch (NullPointerException exp) {
             System.out.println("Command [" + commandName + "]" + "not found ");
+            System.out.println("Введите команду: ");
         }
     }
     public HashMap<String, Command> getHashMap(){

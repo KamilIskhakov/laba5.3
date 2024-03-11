@@ -84,6 +84,7 @@ public class Person implements Comparable<Location>{
         info += "\n Цвет глаз: " + eyeColor;
         info += "\n Страна проживания: " + nationality;
         info += "\n Местоположение: " + location;
+        info += "\n id: " + id;
         return info;
     }
 

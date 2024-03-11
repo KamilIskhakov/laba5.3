@@ -24,8 +24,9 @@ public class ShowCommand implements Command{
     public void execute(String argument) {
         if (argument.isEmpty()){
             for(Person person : ioManager.getCollection()){
-                System.out.print(person.getName()+", ");
+                System.out.print(person.getName()+" ");
             }
+            System.out.println(" ");
         }
         else{
             System.out.println("Некорректный ввод");
