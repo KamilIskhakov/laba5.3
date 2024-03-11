@@ -1,6 +1,7 @@
 package DAO;
 
 import CollectionObjects.Person;
+import Service.ToXML;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -22,6 +23,14 @@ public class IOManager {
 
     public void setFilePath(String filePath) {
         this.filePath = filePath;
+    }
+
+    public void addToCollection(Person person) {
+        personcollection.add(person);
+    }
+
+    public void save() {
+        ToXML.convertToXML(this, filePath);
     }
 
     /**

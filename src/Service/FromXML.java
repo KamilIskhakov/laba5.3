@@ -12,7 +12,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class FromXML {
-    public static IOManager convertFromXMLt(File fileName) throws JAXBException {
+    public static IOManager convertFromXML(File fileName) throws JAXBException {
         JAXBContext context = JAXBContext.newInstance(IOManager.class);
         Unmarshaller unmarshaller = context.createUnmarshaller();
         return (IOManager) unmarshaller.unmarshal(fileName);

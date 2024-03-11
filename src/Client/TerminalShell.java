@@ -12,8 +12,8 @@ public class TerminalShell {
     }
     public void start(){
         Scanner scanner = new Scanner(System.in);
-        String consoleLine = scanner.nextLine();
         while(true) {
+            String consoleLine = scanner.nextLine();
             if(consoleLine.isEmpty()) {
                 continue;
             }
@@ -21,11 +21,19 @@ public class TerminalShell {
                 String[] consoleInput = consoleLine.split(" ");
                 String commandLine = consoleInput[0];
                 String argumentLine = consoleInput[1];
-                commandManager.execute(commandLine,argumentLine);
+                try{
+                    commandManager.execute(commandLine,argumentLine);
+                }catch(NullPointerException exp){
+                    System.out.println("Lol");
+                }
             }
             else {
                 String commandLine = consoleLine;
-                commandManager.execute(commandLine,"");
+                try{
+                    commandManager.execute(commandLine,"");
+                }catch(NullPointerException exp){
+                    System.out.println("Lol");
+                }
             }
 
         }

@@ -17,6 +17,6 @@ public class HelpCommand implements Command{
 
     @Override
     public void execute(String argument) {
-
+        System.out.println("дошел до данной части и выполнил");
     }
 }
