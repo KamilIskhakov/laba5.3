@@ -1,6 +1,8 @@
 package CollectionObjects;
 
 
+import Client.Main;
+
 import java.time.ZonedDateTime;
 
 public class Person {
@@ -9,20 +11,21 @@ public class Person {
     private Coordinates coordinates;
     private ZonedDateTime creationDate;
     private Integer height;
+    private double weight;
     private Color eyeColor;
     private Country nationality;
     private Location location;
 
-    public Person(Integer id, String name, Coordinates coordinates, ZonedDateTime creationDate, Integer height,
+    public Person(String name, Coordinates coordinates,Integer height, double weight,
                   Color eyeColor, Country nationality, Location location) {
-        this.id = id;
         this.name = name;
         this.coordinates = coordinates;
-        this.creationDate = creationDate;
         this.height = height;
+        this.weight = weight;
         this.eyeColor = eyeColor;
         this.nationality = nationality;
         this.location = location;
+        creationDate = ZonedDateTime.now();
     }
 
     public Integer getId() {
@@ -100,4 +103,6 @@ public class Person {
     public void setLocation(Location location) {
         this.location = location;
     }
+
+
 }

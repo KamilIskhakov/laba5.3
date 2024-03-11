@@ -13,11 +13,13 @@ public class ScriptShell {
     }
 
     public void start(){
+        Main.script = true;
         File scriptFile = new File(scriptpath);
         Scanner scriptScanner = null;
         try {
             scriptScanner = new Scanner(scriptFile);
         }catch (FileNotFoundException e){
+            Main.script = false;
             System.out.println("File is not founded");
         }
         if(scriptScanner != null) {
@@ -37,5 +39,6 @@ public class ScriptShell {
                 commandManager.execute(command,"");
             }
         }
+        Main.script = false;
     }
 }

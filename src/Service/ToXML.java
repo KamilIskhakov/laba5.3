@@ -20,7 +20,7 @@ public class ToXML {
             marshaller.marshal(collectionManager, bufferedOutputStream);
             bufferedOutputStream.close();
         } catch (JAXBException | IOException e) {
-            System.out.println("lol, we can not parse to XML");
+            System.out.println(e);
         }
     }
 }

@@ -20,7 +20,6 @@ public class IOManager {
 
     public IOManager() {
     }
-
     public void setFilePath(String filePath) {
         this.filePath = filePath;
     }
@@ -29,8 +28,33 @@ public class IOManager {
         personcollection.add(person);
     }
 
+    public void updateCollectionById(Integer id){
+        for(Person person : personcollection)
+                if(Objects.equals(person.getId(), id))
+                    personcollection.remove(person);
+    }
+
     public void save() {
         ToXML.convertToXML(this, filePath);
+    }
+    public void clear() {
+        personcollection.clear();
+    }
+
+    public Integer generateId() {
+        int count = 0;
+        int id = 1;
+        while(count != personcollection.size()) {
+            for(Person person : personcollection) {
+                count++;
+                if(person.getId() == id) {
+                    id++;
+                    count = 0;
+                    break;
+                }
+            }
+        }
+        return id;
     }
 
     /**

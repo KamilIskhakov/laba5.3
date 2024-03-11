@@ -9,13 +9,15 @@ import java.util.Queue;
 import java.util.Scanner;
 import Service.*;
 public class Main {
+    public static boolean script = false;
     public static Queue<String> scriptLines = new LinkedList<String>() {};
     public static void main(String[] args) {
         Scanner userScanner = new Scanner(System.in);
         ShellPersonParametrs shellPersonParametrs = new ShellPersonParametrs(userScanner);
-        IOManager ioManager = CollectionCreator.load("");
+        IOManager ioManager = CollectionCreator.load("Client/save.xml");
         CommandManager commandManager = new CommandManager(ioManager, shellPersonParametrs);
         TerminalShell terminalShell = new TerminalShell(commandManager);
         terminalShell.start();
     }
+
 }

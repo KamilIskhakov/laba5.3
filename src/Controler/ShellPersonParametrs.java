@@ -197,7 +197,7 @@ public class ShellPersonParametrs {
 
         boolean check = false; //правильно ли введено с консоли
 
-        System.out.print("Введите Страну: ");
+        System.out.print("Введите цвет: ");
         Color color = null;
         while (!check) {
             try {
@@ -205,7 +205,7 @@ public class ShellPersonParametrs {
                 check = true;
             } catch (Exception e) {
                 System.out.println("\nДанные введены неверно");
-                System.out.print("Введите Страну: ");
+                System.out.print("Введите цвет: ");
             }
         }
         return color;
@@ -298,6 +298,8 @@ public class ShellPersonParametrs {
         Double weight = Double.parseDouble(Main.scriptLines.poll());
         return weight;
     }
+
+
 
     public String toString() {
         return "ShellPersonParametrs (вспомогательный класс для запросов пользователю)";
