@@ -19,6 +19,10 @@ public class SaveCommand implements Command{
 
     @Override
     public void execute(String argument) {
-        ioManager.save();
+        if(argument.isEmpty()){
+            ioManager.save();
+        }else {
+            System.out.println("Некорректный ввод");
+        }
     }
 }

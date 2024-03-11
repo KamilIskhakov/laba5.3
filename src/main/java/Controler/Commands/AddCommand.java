@@ -24,7 +24,11 @@ public class AddCommand implements Command {
 
     @Override
     public void execute(String argument) {
-        Person person = new PersonCreateHelper(ioManager,shellPersonParametrs).createPeople();
-        ioManager.addToCollection(person);
+        if (argument.isEmpty()) {
+            Person person = new PersonCreateHelper(ioManager, shellPersonParametrs).createPeople();
+            ioManager.addToCollection(person);
+        }else{
+            System.out.println("Некорректный ввод");
+        }
     }
 }

@@ -28,7 +28,7 @@ public class ExecuteScriptCommand implements Command{
             new ScriptShell(new CommandManager(ioManager,shellPersonParametrs),argument).start();
         }
         else{
-
+            System.out.println("Некорректный ввод");
         }
 
     }

@@ -28,7 +28,7 @@ public class ShowCommand implements Command{
             }
         }
         else{
-            System.out.println("Некорректный ввод команды");
+            System.out.println("Некорректный ввод");
         }
     }
 }

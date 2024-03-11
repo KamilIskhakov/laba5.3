@@ -23,7 +23,7 @@ public class HeadCommand implements Command{
             System.out.println(ioManager.getCollection().getFirst().toString());
         }
         else{
-
+            System.out.println("Некорректный ввод");
         }
     }
 }

@@ -10,7 +10,7 @@ import java.util.Date;
 
 @XmlRootElement(name = "person")
 @XmlType(propOrder = { "id","creationDate", "name", "coordinates", "height", "weight", "eyeColor", "nationality", "location"})
-public class Person {
+public class Person implements Comparable<Location>{
     private Integer id;
     private String name;
     private Coordinates coordinates;
@@ -124,4 +124,8 @@ public class Person {
     }
 
 
+    @Override
+    public int compareTo(Location location) {
+        return (this.location).getName().length() - location.getName().length();
+    }
 }

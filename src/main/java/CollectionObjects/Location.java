@@ -6,7 +6,7 @@ import jakarta.xml.bind.annotation.XmlType;
 import jakarta.xml.bind.annotation.XmlElement;
 
 @XmlType(propOrder = {"x", "y","z","name"})
-public class Location {
+public class Location  {
     private int x;
     private Float y;
     private double z;

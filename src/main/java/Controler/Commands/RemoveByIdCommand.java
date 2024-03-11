@@ -29,7 +29,7 @@ public class RemoveByIdCommand implements Command{
             ioManager.removeCollectionById(id);
         }
         else{
-
+            System.out.println("Некорректный ввод");
         }
 
     }

@@ -24,7 +24,7 @@ public class ShellPersonParametrs {
 
         boolean check = false; //правильно ли введено с консоли
 
-        System.out.print("Введите имя: ");
+        System.out.println("Введите имя: ");
         String name = null;
         while (!check) {
             try {
@@ -33,11 +33,11 @@ public class ShellPersonParametrs {
                     check = true;
                 else {
                     System.out.println("\nДанные введены неверно");
-                    System.out.print("Введите имя: ");
+                    System.out.println("Введите имя: ");
                 }
             } catch (Exception e) {
                 System.out.println("\nДанные введены неверно");
-                System.out.print("Введите имя: ");
+                System.out.println("Введите имя: ");
             }
         }
         return name;
@@ -52,7 +52,7 @@ public class ShellPersonParametrs {
 
         boolean check = false; //правильно ли введено с консоли
 
-        System.out.print("Введите координату X: ");
+        System.out.println("Введите координату X: ");
         Float x = null;
         while (!check) {
             try {
@@ -61,11 +61,11 @@ public class ShellPersonParametrs {
                     check = true;
                 else {
                     System.out.println("\nДанные введены неверно");
-                    System.out.print("Введите координату X: ");
+                    System.out.println("Введите координату X: ");
                 }
             } catch (Exception e) {
                 System.out.println("\nДанные введены неверно");
-                System.out.print("Введите координату X: ");
+                System.out.println("Введите координату X: ");
             }
         }
 
@@ -73,7 +73,7 @@ public class ShellPersonParametrs {
 
         check = false; //правильно ли введено с консоли
 
-        System.out.print("Введите координату Y: ");
+        System.out.println("Введите координату Y: ");
         Float y = null;
         while (!check) {
             try {
@@ -82,11 +82,11 @@ public class ShellPersonParametrs {
                     check = true;
                 else {
                     System.out.println("\nДанные введены неверно");
-                    System.out.print("Введите координату Y: ");
+                    System.out.println("Введите координату Y: ");
                 }
             } catch (Exception e) {
                 System.out.println("\nДанные введены неверно");
-                System.out.print("Введите координату Y: ");
+                System.out.println("Введите координату Y: ");
             }
         }
         return new Coordinates(x,y);
@@ -102,7 +102,7 @@ public class ShellPersonParametrs {
 
         boolean check = false; //правильно ли введено с консоли
 
-        System.out.print("Введите координату X: ");
+        System.out.println("Введите координату X: ");
         Integer x = null;
         while (!check) {
             try {
@@ -111,11 +111,11 @@ public class ShellPersonParametrs {
                     check = true;
                 else {
                     System.out.println("\nДанные введены неверно");
-                    System.out.print("Введите координату X: ");
+                    System.out.println("Введите координату X: ");
                 }
             } catch (Exception e) {
                 System.out.println("\nДанные введены неверно");
-                System.out.print("Введите координату X: ");
+                System.out.println("Введите координату X: ");
             }
         }
 
@@ -123,7 +123,7 @@ public class ShellPersonParametrs {
 
         check = false; //правильно ли введено с консоли
 
-        System.out.print("Введите координату Y: ");
+        System.out.println("Введите координату Y: ");
         Float y = null;
         while (!check) {
             try {
@@ -132,11 +132,11 @@ public class ShellPersonParametrs {
                     check = true;
                 else {
                     System.out.println("\nДанные введены неверно");
-                    System.out.print("Введите координату Y: ");
+                    System.out.println("Введите координату Y: ");
                 }
             } catch (Exception e) {
                 System.out.println("\nДанные введены неверно");
-                System.out.print("Введите координату Y: ");
+                System.out.println("Введите координату Y: ");
             }
         }
 
@@ -144,7 +144,7 @@ public class ShellPersonParametrs {
 
         check = false; //правильно ли введено с консоли
 
-        System.out.print("Введите координату Z: ");
+        System.out.println("Введите координату Z: ");
         Double z = null;
         while (!check) {
             try {
@@ -153,18 +153,18 @@ public class ShellPersonParametrs {
                     check = true;
                 else {
                     System.out.println("\nДанные введены неверно");
-                    System.out.print("Введите координату Z: ");
+                    System.out.println("Введите координату Z: ");
                 }
             } catch (Exception e) {
                 System.out.println("\nДанные введены неверно");
-                System.out.print("Введите координату Z: ");
+                System.out.println("Введите координату Z: ");
             }
         }
         scanner = new Scanner(System.in);
 
         check = false; //правильно ли введено с консоли
 
-        System.out.print("Введите имя: ");
+        System.out.println("Введите имя: ");
         String name = null;
         while (!check) {
             try {
@@ -173,11 +173,11 @@ public class ShellPersonParametrs {
                     check = true;
                 else {
                     System.out.println("\nДанные введены неверно");
-                    System.out.print("Введите имя: ");
+                    System.out.println("Введите имя: ");
                 }
             } catch (Exception e) {
                 System.out.println("\nДанные введены неверно");
-                System.out.print("Введите имя: ");
+                System.out.println("Введите имя: ");
             }
         }
 
@@ -197,7 +197,7 @@ public class ShellPersonParametrs {
 
         boolean check = false; //правильно ли введено с консоли
 
-        System.out.print("Введите цвет: ");
+        System.out.println("Введите цвет: ");
         Color color = null;
         while (!check) {
             try {
@@ -205,7 +205,7 @@ public class ShellPersonParametrs {
                 check = true;
             } catch (Exception e) {
                 System.out.println("\nДанные введены неверно");
-                System.out.print("Введите цвет: ");
+                System.out.println("Введите цвет: ");
             }
         }
         return color;
@@ -220,7 +220,7 @@ public class ShellPersonParametrs {
 
         boolean check = false; //правильно ли введено с консоли
 
-        System.out.print("Введите Страну: ");
+        System.out.println("Введите Страну: ");
         Country country = null;
         while (!check) {
             try {
@@ -228,7 +228,7 @@ public class ShellPersonParametrs {
                 check = true;
             } catch (Exception e) {
                 System.out.println("\nДанные введены неверно");
-                System.out.print("Введите Страну: ");
+                System.out.println("Введите Страну: ");
             }
         }
         return country;
@@ -244,7 +244,7 @@ public class ShellPersonParametrs {
 
         boolean check = false; //правильно ли введено с консоли
 
-        System.out.print("Введите координату X: ");
+        System.out.println("Введите рост: ");
         Integer height = null;
         while (!check) {
             try {
@@ -253,11 +253,11 @@ public class ShellPersonParametrs {
                     check = true;
                 else {
                     System.out.println("\nДанные введены неверно");
-                    System.out.print("Введите координату X: ");
+                    System.out.println("Введите рост: ");
                 }
             } catch (Exception e) {
                 System.out.println("\nДанные введены неверно");
-                System.out.print("Введите координату X: ");
+                System.out.println("Введите рост: ");
             }
         }
 
@@ -274,7 +274,7 @@ public class ShellPersonParametrs {
 
         boolean check = false; //правильно ли введено с консоли
 
-        System.out.print("Введите координату X: ");
+        System.out.println("Введите вес: ");
         Double weight = null;
         while (!check) {
             try {
@@ -283,11 +283,11 @@ public class ShellPersonParametrs {
                     check = true;
                 else {
                     System.out.println("\nДанные введены неверно");
-                    System.out.print("Введите координату X: ");
+                    System.out.println("Введите вес: ");
                 }
             } catch (Exception e) {
                 System.out.println("\nДанные введены неверно");
-                System.out.print("Введите координату X: ");
+                System.out.println("Введите вес: ");
             }
         }
 

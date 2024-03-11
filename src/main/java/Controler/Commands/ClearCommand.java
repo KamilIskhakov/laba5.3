@@ -23,7 +23,7 @@ public class ClearCommand implements Command{
             ioManager.clear();
         }
         else{
-
+            System.out.println("Некорректный ввод");
         }
     }
 }

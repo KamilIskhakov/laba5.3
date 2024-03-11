@@ -42,7 +42,7 @@ public class UpdateCommand implements Command{
             ioManager.setPersonCollection(people);
         }
         else{
-
+            System.out.println("Некорректный ввод");
         }
     }
 }

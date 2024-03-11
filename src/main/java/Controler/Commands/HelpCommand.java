@@ -26,10 +26,14 @@ public class HelpCommand implements Command{
 
     @Override
     public void execute(String argument) {
-        HashMap<String,Command> com = new CommandManager(ioManager,shellPersonParametrs).getHashMap();
-        for (String command : com.keySet()){
-            Command item = com.get(command);
-            System.out.println(item.getDescription());
+        if (argument.isEmpty()){
+            HashMap<String,Command> com = new CommandManager(ioManager,shellPersonParametrs).getHashMap();
+            for (String command : com.keySet()){
+                Command item = com.get(command);
+                System.out.println(item.getDescription());
+            }
+        }else {
+            System.out.println("Некорректный ввод");
         }
     }
 }

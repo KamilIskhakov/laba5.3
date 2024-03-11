@@ -11,6 +11,7 @@ public class TerminalShell {
         this.commandManager = commandManager;
     }
     public void start(){
+        System.out.println("Введите команду");
         Scanner scanner = new Scanner(System.in);
         while(true) {
             String consoleLine = scanner.nextLine();

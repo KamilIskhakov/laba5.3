@@ -20,7 +20,7 @@ public class ExitCommand implements Command{
             System.exit(0);
         }
         else{
-
+            System.out.println("Некорректный ввод");
         }
     }
 }

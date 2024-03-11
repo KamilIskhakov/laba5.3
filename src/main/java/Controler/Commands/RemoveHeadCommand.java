@@ -23,7 +23,7 @@ public class RemoveHeadCommand implements Command{
             ioManager.removeHead();
         }
         else{
-
+            System.out.println("Некорректный ввод");
         }
     }
 }

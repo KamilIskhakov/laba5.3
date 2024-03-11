@@ -22,10 +22,10 @@ public class CommandManager {
         commands.put("clear", new ClearCommand(ioManager));
         commands.put("execute_script", new ExecuteScriptCommand(ioManager, shellPersonParametrs));
         commands.put("head", new HeadCommand(ioManager));
-        commands.put("remove_greater", new RemoveHeadCommand(ioManager));
-        /*commands.put("group_counting_by_name", new GroupCountingByNameCommand(ioManager));
-        commands.put("filter_greater_than_height", new FilterGreaterThanHeightCommand(ioManager, shellPersonParametrs));
-        commands.put("print_less_than_location", new FilterLessThanLocationCommand(ioManager, shellPersonParametrs));*/
+        commands.put("remove_head", new RemoveHeadCommand(ioManager));
+        commands.put("group_counting_by_name", new GroupCountingByNameCommand(ioManager));
+        commands.put("filter_greater_than_height", new FilterGreaterThanHeightCommand(ioManager));
+        commands.put("filter_less_than_location", new FilterLessThanLocationCommand(ioManager, shellPersonParametrs));
         commands.put("exit", new ExitCommand());
     }
 
