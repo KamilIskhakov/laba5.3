@@ -14,7 +14,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner userScanner = new Scanner(System.in);
         ShellPersonParametrs shellPersonParametrs = new ShellPersonParametrs(userScanner);
-        IOManager ioManager = CollectionCreator.load("Client/save.xml");
+        IOManager ioManager = CollectionCreator.load("save.xml");
         CommandManager commandManager = new CommandManager(ioManager, shellPersonParametrs);
         TerminalShell terminalShell = new TerminalShell(commandManager);
         terminalShell.start();

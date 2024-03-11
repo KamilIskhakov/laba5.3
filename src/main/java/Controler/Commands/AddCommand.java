@@ -25,17 +25,19 @@ public class AddCommand implements Command {
     @Override
     public void execute(String argument) {
         if (Main.script){
-            ioManager.addToCollection(new Person(
+            Person per = new Person(
                     shellPersonParametrs.askNameScript(),
                     shellPersonParametrs.askCoordinatesScript(),
                     shellPersonParametrs.askHeightScript(),
                     shellPersonParametrs.askWeightScript(),
                     shellPersonParametrs.askColorScript(),
                     shellPersonParametrs.askCountryScript(),
-                    shellPersonParametrs.askLocationScript()));
+                    shellPersonParametrs.askLocationScript());
+            per.setId(ioManager.generateId());
+            ioManager.addToCollection(per);
         }
         else {
-            ioManager.addToCollection(new Person(
+            Person per = new Person(
                     shellPersonParametrs.askNameConsole(),
                     shellPersonParametrs.askCoordinatesConsole(),
                     shellPersonParametrs.askHeightConsole(),
@@ -43,7 +45,9 @@ public class AddCommand implements Command {
                     shellPersonParametrs.askColorConsole(),
                     shellPersonParametrs.askCountryConsole(),
                     shellPersonParametrs.askLocationConsole()
-            ));
+            );
+            per.setId(ioManager.generateId());
+            ioManager.addToCollection(per);
         }
     }
 }

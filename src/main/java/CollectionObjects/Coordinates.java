@@ -1,5 +1,12 @@
 package CollectionObjects;
 
+
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
+
+
+
+@XmlType(propOrder = {"x", "y"})
 public class Coordinates {
     private Float x;
     private Float y;
@@ -8,11 +15,14 @@ public class Coordinates {
         this.x = x;
         this.y = y;
     }
+    public Coordinates(){
 
+    }
+    @XmlElement
     public Float getX() {
         return x;
     }
-
+    @XmlElement
     public Float getY() {
         return y;
     }

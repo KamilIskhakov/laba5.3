@@ -1,8 +1,9 @@
 package Service;
 
 import DAO.IOManager;
+import jakarta.xml.bind.JAXBException;
 
-import javax.xml.bind.JAXBException;
+
 import java.io.File;
 import java.util.ArrayDeque;
 
@@ -14,7 +15,6 @@ public final class CollectionCreator {
      * builds new Collection Manager from xml-file
      * @param filePath to the xml-file
      * @return new Collection Manager
-     * @throws JAXBException if xml-file cannot be converted to java object
      */
     public static IOManager load(String filePath){
         File file = new File(filePath);

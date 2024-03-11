@@ -2,14 +2,19 @@ package CollectionObjects;
 
 
 import Client.Main;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlType;
 
-import java.time.ZonedDateTime;
+import jakarta.xml.bind.annotation.XmlElement;
+import java.util.Date;
 
+@XmlRootElement(name = "person")
+@XmlType(propOrder = { "id","creationDate", "name", "coordinates", "height", "weight", "eyeColor", "nationality", "location"})
 public class Person {
     private Integer id;
     private String name;
     private Coordinates coordinates;
-    private ZonedDateTime creationDate;
+    private Date creationDate;
     private Integer height;
     private double weight;
     private Color eyeColor;
@@ -25,23 +30,33 @@ public class Person {
         this.eyeColor = eyeColor;
         this.nationality = nationality;
         this.location = location;
-        creationDate = ZonedDateTime.now();
+        creationDate = new Date();
     }
-
+    public Person(){
+    }
+    @XmlElement
     public Integer getId() {
         return id;
     }
+
     public String getName() {
         return name;
     }
+    @XmlElement
     public Coordinates getCoordinates() {
         return coordinates;
     }
-    public ZonedDateTime getCreationDate() {
+    @XmlElement
+    public Date getCreationDate() {
         return creationDate;
     }
+    @XmlElement
     public Integer getHeight() {
         return height;
+    }
+    @XmlElement
+    public double getWeight() {
+        return weight;
     }
     public Color getEyeColor() {
         return eyeColor;
@@ -50,6 +65,7 @@ public class Person {
     public Country getNationality() {
         return nationality;
     }
+    @XmlElement
     public Location getLocation(){
         return location;
     }
@@ -61,7 +77,7 @@ public class Person {
     public String toString() {
         String info = "";
         info += "Человек" + id;
-        info += " (добавлен " + creationDate.toLocalDate() + " " + creationDate.toLocalTime() + ")";
+        info += " (добавлен " + creationDate.toString() + " " + creationDate.toString() + ")";
         info += "\n Имя: " + name;
         info += "\n Местоположение: " + coordinates;
         info += "\n Рост: " + height;
@@ -83,12 +99,15 @@ public class Person {
         this.coordinates = coordinates;
     }
 
-    public void setCreationDate(ZonedDateTime creationDate) {
+    public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
 
     public void setHeight(Integer height) {
         this.height = height;
+    }
+    public void setWeight(double weight) {
+        this.weight = weight;
     }
 
     public void setEyeColor(Color eyeColor) {
