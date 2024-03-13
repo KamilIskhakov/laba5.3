@@ -2,6 +2,7 @@ package Controler.Commands;
 
 import Client.Main;
 import CollectionObjects.Person;
+import Controler.PersonCreateHelper;
 import Controler.ShellPersonParametrs;
 import DAO.IOManager;
 
@@ -29,17 +30,8 @@ public class UpdateCommand implements Command{
     public void execute(String argument) {
         if (!argument.isEmpty()) {
             Integer id = Integer.parseInt(argument);
-            ArrayDeque<Person> people = new ArrayDeque<>();
-            Object[] arrayObjectPeople = ioManager.getCollection().toArray();
-            Person[] arrayPeople = new Person[arrayObjectPeople.length];
-            for (int i = 0; i < arrayPeople.length; i++) {
-                arrayPeople[i] = (Person) arrayObjectPeople[i];
-                if (Objects.equals(arrayPeople[i].getId(), id)) {
-                    arrayPeople[i] = new PersonCreateHelper(ioManager,shellPersonParametrs).createPeople();
-                }
-                people.add(arrayPeople[i]);
-            }
-            ioManager.setPersonCollection(people);
+            Person person = new PersonCreateHelper(ioManager,shellPersonParametrs).createPeople();
+            ioManager.update(person,id);
         }
         else{
             System.out.println("Некорректный ввод");

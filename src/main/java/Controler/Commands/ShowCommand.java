@@ -23,10 +23,7 @@ public class ShowCommand implements Command{
     @Override
     public void execute(String argument) {
         if (argument.isEmpty()){
-            for(Person person : ioManager.getCollection()){
-                System.out.print(person.getName()+" ");
-            }
-            System.out.println(" ");
+            ioManager.showCollection();
         }
         else{
             System.out.println("Некорректный ввод");

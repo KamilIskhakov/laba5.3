@@ -1,4 +1,4 @@
-package Controler.Commands;
+package Controler;
 
 import Client.Main;
 import CollectionObjects.Location;
@@ -7,10 +7,8 @@ import Controler.ShellPersonParametrs;
 import DAO.IOManager;
 
 public class LocationCreateHelper {
-    private IOManager ioManager;
     private ShellPersonParametrs shellPersonParametrs;
-    public LocationCreateHelper(IOManager ioManager, ShellPersonParametrs shellPersonParametrs){
-        this.ioManager = ioManager;
+    public LocationCreateHelper(ShellPersonParametrs shellPersonParametrs){
         this.shellPersonParametrs = shellPersonParametrs;
     }
     public Location createLocation(){

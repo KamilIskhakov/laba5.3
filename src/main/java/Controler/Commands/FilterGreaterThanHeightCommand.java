@@ -22,14 +22,7 @@ public class FilterGreaterThanHeightCommand implements Command{
     public void execute(String argument) {
         if (!argument.isEmpty()) {
             Integer height = Integer.parseInt(argument);
-            Object[] arrayObjectPeople = ioManager.getCollection().toArray();
-            Person[] arrayPeople = new Person[arrayObjectPeople.length];
-            for (int i = 0; i < arrayPeople.length; i++) {
-                arrayPeople[i] = (Person) arrayObjectPeople[i];
-                if(arrayPeople[i].getHeight() > height ) {
-                    System.out.print(arrayPeople[i].getName()+" ");
-                }
-            }
+            ioManager.FilterGreaterThanHeight(height);
         }
         else{
             System.out.println("Некорректный ввод");

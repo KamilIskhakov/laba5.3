@@ -24,18 +24,11 @@ public class GroupCountingByNameCommand implements Command{
     @Override
     public void execute(String argument) {
         if (argument.isEmpty()) {
-            Object[] arrayObjectPeople = ioManager.getCollection().toArray();
-            Person[] arrayPeople = new Person[arrayObjectPeople.length];
-            int[] countName = new int[1024];
-            for (int i = 0; i < arrayPeople.length; i++) {
-                arrayPeople[i] = (Person) arrayObjectPeople[i];
-                int j = arrayPeople[i].getName().length();
-                countName[j] += 1;
-            }
-            for (int i = 1; i < arrayPeople.length; i++){
-                if(countName[i] != 0) {
-                    System.out.println("Группа имён с длинной " + "i: " + countName[i]);
-                }
+            int count = 0;
+        for(int i : ioManager.GroupPeople())   {
+            if (i>0){
+            System.out.println("Группа имён с длинной " + count + ": " + i);}
+            count += 1;
             }
         }
         else{

@@ -15,8 +15,8 @@ public class ShellPersonParametrs {
 
     private Scanner userScanner;
 
-    public ShellPersonParametrs(Scanner userScanner) {
-        this.userScanner = userScanner;
+    public ShellPersonParametrs() {
+
     }
 
     public String askNameConsole() {

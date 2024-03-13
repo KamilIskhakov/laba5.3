@@ -20,7 +20,7 @@ public class HeadCommand implements Command{
     @Override
     public void execute(String argument) {
         if (argument.isEmpty()) {
-            System.out.println(ioManager.getCollection().getFirst().toString());
+            System.out.println(ioManager.showHead());
         }
         else{
             System.out.println("Некорректный ввод");

@@ -1,14 +1,17 @@
 package DAO;
 
+import Client.Main;
+import CollectionObjects.Location;
 import CollectionObjects.Person;
-import Controler.Commands.AddCommand;
+import Controler.LocationCreateHelper;
+import Controler.PersonCreateHelper;
 import Service.ToXML;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
 import java.util.*;
 @XmlRootElement(name = "personList")
-public class IOManager {
+public class IOManager{
     @XmlElement(name = "person")
     private ArrayDeque<Person> personcollection = new ArrayDeque<>();
     private final Date dateOfInitialization = new Date();
@@ -19,15 +22,15 @@ public class IOManager {
         this.filePath = filePath;
     }
 
-    public IOManager() {
+    public IOManager(){
     }
-    public ArrayDeque<Person> getCollection(){
+    private ArrayDeque<Person> getCollection(){
         return personcollection;
     }
-    public void setFilePath(String filePath) {
+    private void setFilePath(String filePath) {
         this.filePath = filePath;
     }
-    public void setPersonCollection(ArrayDeque<Person> people){
+    private void setPersonCollection(ArrayDeque<Person> people){
         personcollection = people;
     }
 
@@ -43,6 +46,9 @@ public class IOManager {
     public void removeHead(){
         personcollection.poll();
     }
+    public String showHead(){
+        return personcollection.getFirst().toString();
+    }
 
     public void save() {
         ToXML.convertToXML(this, filePath);
@@ -50,7 +56,56 @@ public class IOManager {
     public void clear() {
         personcollection.clear();
     }
-
+    public int[] GroupPeople(){
+        Object[] arrayObjectPeople = personcollection.toArray();
+        Person[] arrayPeople = new Person[arrayObjectPeople.length];
+        int[] countName = new int[1024];
+        for (int i = 0; i < arrayPeople.length; i++) {
+            arrayPeople[i] = (Person) arrayObjectPeople[i];
+            int j = arrayPeople[i].getName().length();
+            countName[j] += 1;
+        }
+        return countName;
+    }
+    public void FilterGreaterThanHeight(Integer height) {
+            Object[] arrayObjectPeople = personcollection.toArray();
+            Person[] arrayPeople = new Person[arrayObjectPeople.length];
+            for (int i = 0; i < arrayPeople.length; i++) {
+                arrayPeople[i] = (Person) arrayObjectPeople[i];
+                if(arrayPeople[i].getHeight() > height ) {
+                    System.out.print(arrayPeople[i].getName()+" ");
+                }
+            }
+        }
+    public void FilterLessThanLocation(Location location) {
+            Object[] arrayObjectPeople = personcollection.toArray();
+            Person[] arrayPeople = new Person[arrayObjectPeople.length];
+            for (int i = 0; i < arrayPeople.length; i++) {
+                arrayPeople[i] = (Person) arrayObjectPeople[i];
+                if(arrayPeople[i].compareTo(location) < 0 ) {
+                    System.out.print(arrayPeople[i].getName()+" ");
+                }
+            }
+    }
+    public void showCollection() {
+        for(Person person : personcollection){
+            System.out.print(person.getName()+" ");
+        }
+        System.out.println(" ");
+    }
+    public void update(Person userPerson, Integer id) {
+        ArrayDeque<Person> people = new ArrayDeque<>();
+        Object[] arrayObjectPeople = personcollection.toArray();
+        Person[] arrayPeople = new Person[arrayObjectPeople.length];
+        for (int i = 0; i < arrayPeople.length; i++) {
+            arrayPeople[i] = (Person) arrayObjectPeople[i];
+            if (Objects.equals(arrayPeople[i].getId(), id)) {
+                arrayPeople[i] = userPerson;
+            }
+            people.add(arrayPeople[i]);
+        }
+        setPersonCollection(people);
+    }
     public Integer generateId() {
         int count = 0;
         int id = 1;

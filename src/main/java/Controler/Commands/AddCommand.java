@@ -1,7 +1,7 @@
 package Controler.Commands;
 
-import Client.Main;
 import CollectionObjects.Person;
+import Controler.PersonCreateHelper;
 import Controler.ShellPersonParametrs;
 import DAO.IOManager;
 

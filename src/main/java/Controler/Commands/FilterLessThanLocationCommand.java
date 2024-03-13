@@ -2,6 +2,7 @@ package Controler.Commands;
 
 import CollectionObjects.Location;
 import CollectionObjects.Person;
+import Controler.LocationCreateHelper;
 import Controler.ShellPersonParametrs;
 import DAO.IOManager;
 
@@ -25,15 +26,8 @@ public class FilterLessThanLocationCommand implements Command{
     @Override
     public void execute(String argument) {
         if (argument.isEmpty()) {
-        Object[] arrayObjectPeople = ioManager.getCollection().toArray();
-        Person[] arrayPeople = new Person[arrayObjectPeople.length];
-        Location location = new LocationCreateHelper(ioManager,shellPersonParametrs).createLocation();
-        for (int i = 0; i < arrayPeople.length; i++) {
-                arrayPeople[i] = (Person) arrayObjectPeople[i];
-                if(arrayPeople[i].compareTo(location) < 0 ) {
-                    System.out.print(arrayPeople[i].getName()+" ");
-                }
-            }
+        Location location = new LocationCreateHelper(shellPersonParametrs).createLocation();
+        ioManager.FilterLessThanLocation(location);
         }
         else{
             System.out.println("Некорректный ввод");
