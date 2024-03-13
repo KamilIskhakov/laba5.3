@@ -1,16 +1,15 @@
 package Controler.Commands;
 
 import CollectionObjects.Location;
-import CollectionObjects.Person;
 import Controler.LocationCreateHelper;
 import Controler.ShellPersonParametrs;
-import DAO.IOManager;
+import DAO.CollectionManager;
 
 public class FilterLessThanLocationCommand implements Command{
-    private  IOManager ioManager;
+    private CollectionManager collectionManager;
     private ShellPersonParametrs shellPersonParametrs;
-    public FilterLessThanLocationCommand(IOManager ioManager, ShellPersonParametrs shellPersonParametrs){
-        this.ioManager = ioManager;
+    public FilterLessThanLocationCommand(CollectionManager collectionManager, ShellPersonParametrs shellPersonParametrs){
+        this.collectionManager = collectionManager;
         this.shellPersonParametrs = shellPersonParametrs;
     }
     @Override
@@ -27,7 +26,7 @@ public class FilterLessThanLocationCommand implements Command{
     public void execute(String argument) {
         if (argument.isEmpty()) {
         Location location = new LocationCreateHelper(shellPersonParametrs).createLocation();
-        ioManager.FilterLessThanLocation(location);
+        collectionManager.FilterLessThanLocation(location);
         }
         else{
             System.out.println("Некорректный ввод");

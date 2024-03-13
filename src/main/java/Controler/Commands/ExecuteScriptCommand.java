@@ -3,13 +3,13 @@ package Controler.Commands;
 import Controler.CommandManager;
 import Controler.ScriptShell;
 import Controler.ShellPersonParametrs;
-import DAO.IOManager;
+import DAO.CollectionManager;
 
 public class ExecuteScriptCommand implements Command{
-    private IOManager ioManager;
+    private CollectionManager collectionManager;
     private ShellPersonParametrs shellPersonParametrs;
-    public ExecuteScriptCommand(IOManager ioManager, ShellPersonParametrs shellPersonParametrs){
-        this.ioManager = ioManager;
+    public ExecuteScriptCommand(CollectionManager collectionManager, ShellPersonParametrs shellPersonParametrs){
+        this.collectionManager = collectionManager;
         this.shellPersonParametrs = shellPersonParametrs;
     }
     @Override
@@ -25,7 +25,7 @@ public class ExecuteScriptCommand implements Command{
     @Override
     public void execute(String argument) {
         if (!argument.isEmpty()) {
-            new ScriptShell(new CommandManager(ioManager,shellPersonParametrs),argument).start();
+            new ScriptShell(new CommandManager(collectionManager,shellPersonParametrs),argument).start();
         }
         else{
             System.out.println("Некорректный ввод");

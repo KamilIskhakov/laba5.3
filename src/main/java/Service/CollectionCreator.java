@@ -1,6 +1,6 @@
 package Service;
 
-import DAO.IOManager;
+import DAO.CollectionManager;
 import jakarta.xml.bind.JAXBException;
 
 
@@ -16,9 +16,9 @@ public final class CollectionCreator {
      * @param filePath to the xml-file
      * @return new Collection Manager
      */
-    public static IOManager load(String filePath){
+    public static CollectionManager load(String filePath){
         File file = new File(filePath);
-        IOManager collectionManager;
+        CollectionManager collectionManager;
         if (file.exists() && file.length() != 0) {
             try {
                 collectionManager = FromXML.convertFromXML(file);
@@ -27,7 +27,7 @@ public final class CollectionCreator {
             }
             collectionManager.setFilePath(filePath);
         } else {
-            collectionManager = new IOManager(new ArrayDeque<>(), filePath);
+            collectionManager = new CollectionManager(new ArrayDeque<>(), filePath);
         }
         return collectionManager;
     }

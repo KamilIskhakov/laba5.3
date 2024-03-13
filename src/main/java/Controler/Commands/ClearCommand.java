@@ -1,11 +1,11 @@
 package Controler.Commands;
 
-import DAO.IOManager;
+import DAO.CollectionManager;
 
 public class ClearCommand implements Command{
-    private IOManager ioManager;
-    public ClearCommand(IOManager ioManager){
-        this.ioManager = ioManager;
+    private CollectionManager collectionManager;
+    public ClearCommand(CollectionManager collectionManager){
+        this.collectionManager = collectionManager;
     }
     @Override
     public String getDescription() {
@@ -20,7 +20,7 @@ public class ClearCommand implements Command{
     @Override
     public void execute(String argument) {
         if (argument.isEmpty()) {
-            ioManager.clear();
+            collectionManager.clear();
         }
         else{
             System.out.println("Некорректный ввод");

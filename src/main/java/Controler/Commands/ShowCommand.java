@@ -1,14 +1,11 @@
 package Controler.Commands;
 
-import CollectionObjects.Person;
-import DAO.IOManager;
-
-import java.util.Objects;
+import DAO.CollectionManager;
 
 public class ShowCommand implements Command{
-    private IOManager ioManager;
-    public ShowCommand(IOManager ioManager){
-        this.ioManager = ioManager;
+    private CollectionManager collectionManager;
+    public ShowCommand(CollectionManager collectionManager){
+        this.collectionManager = collectionManager;
     }
     @Override
     public String getDescription() {
@@ -23,7 +20,7 @@ public class ShowCommand implements Command{
     @Override
     public void execute(String argument) {
         if (argument.isEmpty()){
-            ioManager.showCollection();
+            collectionManager.showCollection();
         }
         else{
             System.out.println("Некорректный ввод");

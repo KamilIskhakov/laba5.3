@@ -1,15 +1,11 @@
 package Controler.Commands;
 
-import CollectionObjects.Person;
-import DAO.IOManager;
-
-import java.util.ArrayDeque;
-import java.util.Objects;
+import DAO.CollectionManager;
 
 public class GroupCountingByNameCommand implements Command{
-    private IOManager ioManager;
-    public GroupCountingByNameCommand(IOManager ioManager){
-        this.ioManager = ioManager;
+    private CollectionManager collectionManager;
+    public GroupCountingByNameCommand(CollectionManager collectionManager){
+        this.collectionManager = collectionManager;
     }
     @Override
     public String getDescription() {
@@ -25,7 +21,7 @@ public class GroupCountingByNameCommand implements Command{
     public void execute(String argument) {
         if (argument.isEmpty()) {
             int count = 0;
-        for(int i : ioManager.GroupPeople())   {
+        for(int i : collectionManager.GroupPeople())   {
             if (i>0){
             System.out.println("Группа имён с длинной " + count + ": " + i);}
             count += 1;

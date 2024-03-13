@@ -1,33 +1,30 @@
 package DAO;
 
-import Client.Main;
 import CollectionObjects.Location;
 import CollectionObjects.Person;
-import Controler.LocationCreateHelper;
-import Controler.PersonCreateHelper;
 import Service.ToXML;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
 import java.util.*;
 @XmlRootElement(name = "personList")
-public class IOManager{
+public class CollectionManager {
     @XmlElement(name = "person")
     private ArrayDeque<Person> personcollection = new ArrayDeque<>();
     private final Date dateOfInitialization = new Date();
     private String filePath;
 
-    public IOManager(ArrayDeque<Person> personcollection, String filePath) {
+    public CollectionManager(ArrayDeque<Person> personcollection, String filePath) {
         this.personcollection = personcollection;
         this.filePath = filePath;
     }
 
-    public IOManager(){
+    public CollectionManager(){
     }
     private ArrayDeque<Person> getCollection(){
         return personcollection;
     }
-    private void setFilePath(String filePath) {
+    public void setFilePath(String filePath) {
         this.filePath = filePath;
     }
     private void setPersonCollection(ArrayDeque<Person> people){

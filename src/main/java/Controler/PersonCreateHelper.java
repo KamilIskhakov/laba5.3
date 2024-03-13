@@ -2,14 +2,13 @@ package Controler;
 
 import Client.Main;
 import CollectionObjects.Person;
-import Controler.ShellPersonParametrs;
-import DAO.IOManager;
+import DAO.CollectionManager;
 
 public class PersonCreateHelper {
     private ShellPersonParametrs shellPersonParametrs;
-    private IOManager ioManager;
-    public PersonCreateHelper(IOManager ioManager, ShellPersonParametrs shellPersonParametrs){
-        this.ioManager = ioManager;
+    private CollectionManager collectionManager;
+    public PersonCreateHelper(CollectionManager collectionManager, ShellPersonParametrs shellPersonParametrs){
+        this.collectionManager = collectionManager;
         this.shellPersonParametrs = shellPersonParametrs;
     }
     public Person createPeople(){
@@ -22,7 +21,7 @@ public class PersonCreateHelper {
                     shellPersonParametrs.askColorScript(),
                     shellPersonParametrs.askCountryScript(),
                     shellPersonParametrs.askLocationScript());
-            per.setId(ioManager.generateId());
+            per.setId(collectionManager.generateId());
             return per;
         } else {
             Person per = new Person(
@@ -34,7 +33,7 @@ public class PersonCreateHelper {
                     shellPersonParametrs.askCountryConsole(),
                     shellPersonParametrs.askLocationConsole()
             );
-            per.setId(ioManager.generateId());
+            per.setId(collectionManager.generateId());
             return per;
         }
     }

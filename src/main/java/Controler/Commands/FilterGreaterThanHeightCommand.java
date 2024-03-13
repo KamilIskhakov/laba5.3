@@ -1,12 +1,11 @@
 package Controler.Commands;
 
-import CollectionObjects.Person;
-import DAO.IOManager;
+import DAO.CollectionManager;
 
 public class FilterGreaterThanHeightCommand implements Command{
-    private IOManager ioManager;
-    public FilterGreaterThanHeightCommand(IOManager ioManager){
-        this.ioManager = ioManager;
+    private CollectionManager collectionManager;
+    public FilterGreaterThanHeightCommand(CollectionManager collectionManager){
+        this.collectionManager = collectionManager;
     }
     @Override
     public String getDescription() {
@@ -22,7 +21,7 @@ public class FilterGreaterThanHeightCommand implements Command{
     public void execute(String argument) {
         if (!argument.isEmpty()) {
             Integer height = Integer.parseInt(argument);
-            ioManager.FilterGreaterThanHeight(height);
+            collectionManager.FilterGreaterThanHeight(height);
         }
         else{
             System.out.println("Некорректный ввод");

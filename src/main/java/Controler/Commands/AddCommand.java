@@ -3,13 +3,13 @@ package Controler.Commands;
 import CollectionObjects.Person;
 import Controler.PersonCreateHelper;
 import Controler.ShellPersonParametrs;
-import DAO.IOManager;
+import DAO.CollectionManager;
 
 public class AddCommand implements Command {
-    private IOManager ioManager;
+    private CollectionManager collectionManager;
     private ShellPersonParametrs shellPersonParametrs;
-    public AddCommand(IOManager ioManager, ShellPersonParametrs shellPersonParametrs){
-        this.ioManager = ioManager;
+    public AddCommand(CollectionManager collectionManager, ShellPersonParametrs shellPersonParametrs){
+        this.collectionManager = collectionManager;
         this.shellPersonParametrs = shellPersonParametrs;
     }
     @Override
@@ -25,8 +25,8 @@ public class AddCommand implements Command {
     @Override
     public void execute(String argument) {
         if (argument.isEmpty()) {
-            Person person = new PersonCreateHelper(ioManager, shellPersonParametrs).createPeople();
-            ioManager.addToCollection(person);
+            Person person = new PersonCreateHelper(collectionManager, shellPersonParametrs).createPeople();
+            collectionManager.addToCollection(person);
         }else{
             System.out.println("Некорректный ввод");
         }

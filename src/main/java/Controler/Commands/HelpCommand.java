@@ -2,15 +2,15 @@ package Controler.Commands;
 
 import Controler.CommandManager;
 import Controler.ShellPersonParametrs;
-import DAO.IOManager;
+import DAO.CollectionManager;
 
 import java.util.HashMap;
 
 public class HelpCommand implements Command{
-    private IOManager ioManager;
+    private CollectionManager collectionManager;
     private ShellPersonParametrs shellPersonParametrs;
-    public HelpCommand(IOManager ioManager, ShellPersonParametrs shellPersonParametrs) {
-        this.ioManager = ioManager;
+    public HelpCommand(CollectionManager collectionManager, ShellPersonParametrs shellPersonParametrs) {
+        this.collectionManager = collectionManager;
         this.shellPersonParametrs = shellPersonParametrs;
     }
 
@@ -27,7 +27,7 @@ public class HelpCommand implements Command{
     @Override
     public void execute(String argument) {
         if (argument.isEmpty()){
-            HashMap<String,Command> com = new CommandManager(ioManager,shellPersonParametrs).getHashMap();
+            HashMap<String,Command> com = new CommandManager(collectionManager,shellPersonParametrs).getHashMap();
             for (String command : com.keySet()){
                 Command item = com.get(command);
                 System.out.println(item.getDescription());

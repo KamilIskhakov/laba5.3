@@ -1,11 +1,11 @@
 package Controler.Commands;
 
-import DAO.IOManager;
+import DAO.CollectionManager;
 
 public class SaveCommand implements Command{
-    private IOManager ioManager;
-    public SaveCommand(IOManager ioManager){
-        this.ioManager = ioManager;
+    private CollectionManager collectionManager;
+    public SaveCommand(CollectionManager collectionManager){
+        this.collectionManager = collectionManager;
     }
     @Override
     public String getDescription() {
@@ -20,7 +20,7 @@ public class SaveCommand implements Command{
     @Override
     public void execute(String argument) {
         if(argument.isEmpty()){
-            ioManager.save();
+            collectionManager.save();
         }else {
             System.out.println("Некорректный ввод");
         }

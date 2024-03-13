@@ -1,11 +1,11 @@
 package Controler.Commands;
 
-import DAO.IOManager;
+import DAO.CollectionManager;
 
 public class HeadCommand implements Command{
-    private IOManager ioManager;
-    public HeadCommand(IOManager ioManager){
-        this.ioManager = ioManager;
+    private CollectionManager collectionManager;
+    public HeadCommand(CollectionManager collectionManager){
+        this.collectionManager = collectionManager;
     }
     @Override
     public String getDescription() {
@@ -20,7 +20,7 @@ public class HeadCommand implements Command{
     @Override
     public void execute(String argument) {
         if (argument.isEmpty()) {
-            System.out.println(ioManager.showHead());
+            System.out.println(collectionManager.showHead());
         }
         else{
             System.out.println("Некорректный ввод");

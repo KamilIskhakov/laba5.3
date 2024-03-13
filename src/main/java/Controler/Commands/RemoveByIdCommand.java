@@ -1,15 +1,11 @@
 package Controler.Commands;
 
-import CollectionObjects.Person;
-import DAO.IOManager;
-
-import java.util.ArrayDeque;
-import java.util.Objects;
+import DAO.CollectionManager;
 
 public class RemoveByIdCommand implements Command{
-    private IOManager ioManager;
-    public RemoveByIdCommand(IOManager ioManager){
-        this.ioManager = ioManager;
+    private CollectionManager collectionManager;
+    public RemoveByIdCommand(CollectionManager collectionManager){
+        this.collectionManager = collectionManager;
 
     }
     @Override
@@ -26,7 +22,7 @@ public class RemoveByIdCommand implements Command{
     public void execute(String argument) {
         if (!argument.isEmpty()) {
             Integer id = Integer.parseInt(argument);
-            ioManager.removeCollectionById(id);
+            collectionManager.removeCollectionById(id);
         }
         else{
             System.out.println("Некорректный ввод");
