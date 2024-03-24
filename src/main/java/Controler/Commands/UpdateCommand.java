@@ -1,8 +1,8 @@
 package Controler.Commands;
 
 import CollectionObjects.Person;
-import Controler.PersonCreateHelper;
-import Controler.ShellPersonParametrs;
+import Service.PersonCreateHelper;
+import DAO.ShellPersonParametrs;
 import DAO.CollectionManager;
 
 public class UpdateCommand implements Command{

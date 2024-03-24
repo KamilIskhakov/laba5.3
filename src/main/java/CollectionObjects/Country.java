@@ -1,7 +1,7 @@
 package CollectionObjects;
 
 
-public enum Country {
+public enum Country implements PersonComposite{
         FRANCE,
         VATICAN,
         SOUTH_KOREA;
@@ -13,4 +13,9 @@ public enum Country {
             }
             return nameList.substring(0, nameList.length()-2);
         }
+
+    @Override
+    public String getNameComposite() {
+        return null;
+    }
 }

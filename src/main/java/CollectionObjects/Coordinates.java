@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 @XmlType(propOrder = {"x", "y"})
-public class Coordinates {
+public class Coordinates implements PersonComposite{
     private Float x;
     private Float y;
 
@@ -31,4 +31,8 @@ public class Coordinates {
         return "X:" + x + " Y:" + y;
     }
 
+    @Override
+    public String getNameComposite() {
+        return "Coordinates";
+    }
 }

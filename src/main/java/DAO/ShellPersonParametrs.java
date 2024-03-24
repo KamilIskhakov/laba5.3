@@ -1,4 +1,4 @@
-package Controler;
+package DAO;
 
 import Client.Main;
 import CollectionObjects.Color;

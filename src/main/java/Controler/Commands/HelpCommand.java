@@ -1,7 +1,7 @@
 package Controler.Commands;
 
 import Controler.CommandManager;
-import Controler.ShellPersonParametrs;
+import DAO.ShellPersonParametrs;
 import DAO.CollectionManager;
 
 import java.util.HashMap;

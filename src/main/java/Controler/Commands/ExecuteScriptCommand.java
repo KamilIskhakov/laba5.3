@@ -1,8 +1,8 @@
 package Controler.Commands;
 
 import Controler.CommandManager;
-import Controler.ScriptShell;
-import Controler.ShellPersonParametrs;
+import Controler.ScriptReader;
+import DAO.ShellPersonParametrs;
 import DAO.CollectionManager;
 
 public class ExecuteScriptCommand implements Command{
@@ -25,7 +25,7 @@ public class ExecuteScriptCommand implements Command{
     @Override
     public void execute(String argument) {
         if (!argument.isEmpty()) {
-            new ScriptShell(new CommandManager(collectionManager,shellPersonParametrs),argument).start();
+            new ScriptReader(new CommandManager(collectionManager,shellPersonParametrs),argument).start();
         }
         else{
             System.out.println("Некорректный ввод");

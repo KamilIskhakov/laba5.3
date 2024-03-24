@@ -1,8 +1,5 @@
 package Controler.Commands;
 
-import Controler.CommandManager;
-import Controler.ScriptShell;
-
 public class ExitCommand implements Command{
     @Override
     public String getDescription() {

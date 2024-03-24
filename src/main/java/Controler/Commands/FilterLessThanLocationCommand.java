@@ -1,8 +1,8 @@
 package Controler.Commands;
 
 import CollectionObjects.Location;
-import Controler.LocationCreateHelper;
-import Controler.ShellPersonParametrs;
+import Service.LocationCreateHelper;
+import DAO.ShellPersonParametrs;
 import DAO.CollectionManager;
 
 public class FilterLessThanLocationCommand implements Command{

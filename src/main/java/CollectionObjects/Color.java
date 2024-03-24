@@ -1,6 +1,6 @@
 package CollectionObjects;
 
-public enum Color {
+public enum Color implements PersonComposite{
     BLACK,
     BLUE,
     ORANGE;
@@ -10,5 +10,10 @@ public enum Color {
             nameList += eyeColor.name() + ", ";
         }
         return nameList.substring(0, nameList.length()-2);
+    }
+
+    @Override
+    public String getNameComposite() {
+        return null;
     }
 }

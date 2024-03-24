@@ -5,6 +5,7 @@ import Controler.Commands.*;
 import java.util.HashMap;
 
 import DAO.*;
+import Exceptions.GiveParPersonException;
 
 public class CommandManager {
     private HashMap<String, Command> commands;
@@ -28,13 +29,13 @@ public class CommandManager {
         commands.put("exit", new ExitCommand());
     }
 
-    public void execute(String commandName, String arguments) {
+    public void execute(String commandName, String arguments){
 
         try {
             Command command = commands.get(commandName);
             command.execute(arguments);
             System.out.println("Введите команду: ");
-        } catch (NullPointerException exp) {
+        } catch (NullPointerException | GiveParPersonException exp) {
             System.out.println("Command [" + commandName + "]" + "not found ");
             System.out.println("Введите команду: ");
         }

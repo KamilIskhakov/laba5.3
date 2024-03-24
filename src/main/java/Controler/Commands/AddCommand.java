@@ -1,9 +1,11 @@
 package Controler.Commands;
 
 import CollectionObjects.Person;
-import Controler.PersonCreateHelper;
-import Controler.ShellPersonParametrs;
+import DAO.PersonAskManager;
+import Exceptions.GiveParPersonException;
+import DAO.ShellPersonParametrs;
 import DAO.CollectionManager;
+import Exceptions.PersonAskException;
 
 public class AddCommand implements Command {
     private CollectionManager collectionManager;
@@ -23,12 +25,16 @@ public class AddCommand implements Command {
     }
 
     @Override
-    public void execute(String argument) {
-        if (argument.isEmpty()) {
-            Person person = new PersonCreateHelper(collectionManager, shellPersonParametrs).createPeople();
+    public void execute(String command) throws PersonAskException{
+        try{
+        if (command.isEmpty()) {
+            Person person = new PersonAskManager().createPerson();
             collectionManager.addToCollection(person);
         }else{
-            System.out.println("Некорректный ввод");
+                System.out.println("Некорректный ввод");
+            }
+        }catch(GiveParPersonException e){
+                throw new PersonAskException(e.getParName());
         }
     }
 }

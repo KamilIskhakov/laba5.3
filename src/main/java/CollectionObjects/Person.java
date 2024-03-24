@@ -6,7 +6,10 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 
 import jakarta.xml.bind.annotation.XmlElement;
+import lombok.Builder;
+
 import java.util.Date;
+
 
 @XmlRootElement(name = "person")
 @XmlType(propOrder = { "id","creationDate", "name", "coordinates", "height", "weight", "eyeColor", "nationality", "location"})

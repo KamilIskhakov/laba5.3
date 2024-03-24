@@ -4,10 +4,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import Client.*;
-public class ScriptShell {
+public class ScriptReader {
     private CommandManager commandManager;
     private String scriptpath;
-    public ScriptShell(CommandManager commandManager, String scriptpath){
+    public ScriptReader(CommandManager commandManager, String scriptpath){
         this.commandManager = commandManager;
         this.scriptpath = scriptpath;
     }

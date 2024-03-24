@@ -1,7 +1,8 @@
-package Controler;
+package Service;
 
 import Client.Main;
 import CollectionObjects.Location;
+import DAO.ShellPersonParametrs;
 
 public class LocationCreateHelper {
     private ShellPersonParametrs shellPersonParametrs;

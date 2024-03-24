@@ -6,7 +6,7 @@ import jakarta.xml.bind.annotation.XmlType;
 import jakarta.xml.bind.annotation.XmlElement;
 
 @XmlType(propOrder = {"x", "y","z","name"})
-public class Location  {
+public class Location implements PersonComposite {
     private int x;
     private Float y;
     private double z;
@@ -41,4 +41,8 @@ public class Location  {
         return "Координата X:" + x + "Координата Y:" + y + "Координата Z:" + z + "Город:" + name;
     }
 
+    @Override
+    public String getNameComposite() {
+        return null;
+    }
 }
