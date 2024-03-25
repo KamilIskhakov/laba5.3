@@ -1,15 +1,19 @@
 package Exceptions;
 
+import CollectionObjects.Person;
+import Controler.Handlers.AddHandler;
+
 public class GiveParPersonException extends Exception {
-    private String par;
-    public GiveParPersonException(String par){
-        this.par = par;
+    private AddHandler addHandler;
+    public GiveParPersonException(AddHandler addHandler){
+        this.addHandler = addHandler;
     }
 
     public String getMessage() {
             return "недостаточно параметров для создания Person";
         }
-    public String getParName() {
-        return par;
+    public void setPersonCom(Person person) {
+        addHandler.setPerson(person);
     }
+
 }

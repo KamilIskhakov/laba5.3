@@ -8,10 +8,6 @@ import DAO.CollectionManager;
 public class UpdateCommand implements Command{
     private CollectionManager collectionManager;
     private ShellPersonParametrs shellPersonParametrs;
-    public UpdateCommand(CollectionManager collectionManager, ShellPersonParametrs shellPersonParametrs){
-        this.collectionManager = collectionManager;
-        this.shellPersonParametrs = shellPersonParametrs;
-    }
     @Override
     public String getDescription() {
         return getName() + "заменяет на новый объект по айди";

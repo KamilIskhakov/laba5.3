@@ -1,6 +1,6 @@
 package Client;
 
-import Controler.CommandManager;
+import Controler.CommandRequestManager;
 import DAO.ShellPersonParametrs;
 import Controler.TerminalInput;
 import Controler.TerminalOutputManager;
@@ -22,8 +22,8 @@ public class Main {
         collectionManager = CollectionCreator.load("save.xml");
         terminalOutputManager = new TerminalOutputManager(System.out);
         terminalInput = new TerminalInput(System.in,terminalOutputManager);
-        CommandManager commandManager = new CommandManager(collectionManager, shellPersonParametrs);
-        TerminalCommandShell terminalCommandShell = new TerminalCommandShell(commandManager);
+        CommandRequestManager commandRequestManager = new CommandRequestManager(collectionManager, shellPersonParametrs);
+        TerminalCommandShell terminalCommandShell = new TerminalCommandShell(commandRequestManager);
         terminalCommandShell.start();
     }
 

@@ -11,8 +11,7 @@ public class PersonAskManager {
     private final double MIN_WEIGHT = 0;
     private HashMap<String, Object> personPar;
     public PersonAskManager(){
-    personPar = new HashMap<>();
-    personPar.put("PersonName", null);
+
     }
     public Person createPerson() throws GiveParPersonException {
         for (String par : personPar.keySet()) {

@@ -4,9 +4,6 @@ import DAO.CollectionManager;
 
 public class RemoveHeadCommand implements Command{
     private CollectionManager collectionManager;
-    public RemoveHeadCommand(CollectionManager collectionManager){
-        this.collectionManager = collectionManager;
-    }
     @Override
     public String getDescription() {
         return  getName() + "удаляет первый элемент очереди";

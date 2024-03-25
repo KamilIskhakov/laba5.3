@@ -12,14 +12,38 @@ public class Location implements PersonComposite {
     private double z;
     private String name;
 
-    public Location(int x, Float y, Double z, String name){
-        this.x = x;
-        this.y = y;
-        this.z = z;
-        this.name = name;
+    public Location(LocationBuilder locationBuilder){
+        x = locationBuilder.x;
+        y = locationBuilder.y;
+        z = locationBuilder.z;
+        name = locationBuilder.name;
     }
     public Location(){
 
+    }
+    public static class LocationBuilder {
+
+        private int x;
+        private Float y; // no null
+        private double z;
+        private String name; //no null
+
+        //constructor for required fields
+        public LocationBuilder(String name, Float y ) {
+            this.name = name;
+            this.y = y;
+        }
+        public LocationBuilder setX(int x) {
+            this.x = x;
+            return this;
+        }
+        public LocationBuilder setZ(double z) {
+            this.z = z;
+            return this;
+        }
+        public Location build() {
+            return new Location(this);
+        }
     }
     @XmlElement
     public int getX(){

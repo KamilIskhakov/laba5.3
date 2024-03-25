@@ -4,6 +4,8 @@ import java.awt.*;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import static java.awt.Color.RED;
+
 public class TerminalOutputManager {
     private final OutputStream outputStream;
     private MessageNotifications messageNotifications = MessageNotifications.ON;
@@ -30,7 +32,10 @@ public class TerminalOutputManager {
     }
 
     public void printlnImportantColorMessage(String string, Color color) {
-        printlnImportantMessage(color.toString() + string + "\u001B[0m");
+        printlnImportantMessage(color.toString() + string );
+    }
+    public void printlnNotCorrectInput() {
+        println("Вы ввели некорректные формат данных");
     }
 
     public void printlnImportantMessage(String string) {

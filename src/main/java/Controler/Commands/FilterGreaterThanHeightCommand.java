@@ -4,9 +4,7 @@ import DAO.CollectionManager;
 
 public class FilterGreaterThanHeightCommand implements Command{
     private CollectionManager collectionManager;
-    public FilterGreaterThanHeightCommand(CollectionManager collectionManager){
-        this.collectionManager = collectionManager;
-    }
+
     @Override
     public String getDescription() {
         return getName() + "выводит объекты коллекции, у которых поле height меньше заданного";

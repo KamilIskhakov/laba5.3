@@ -4,9 +4,6 @@ import DAO.CollectionManager;
 
 public class ShowCommand implements Command{
     private CollectionManager collectionManager;
-    public ShowCommand(CollectionManager collectionManager){
-        this.collectionManager = collectionManager;
-    }
     @Override
     public String getDescription() {
         return getName() + "выводит элементы коллекции";

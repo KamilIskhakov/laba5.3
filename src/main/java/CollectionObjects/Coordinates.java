@@ -11,13 +11,28 @@ public class Coordinates implements PersonComposite{
     private Float x;
     private Float y;
 
-    public Coordinates(Float x, Float y) {
-        this.x = x;
-        this.y = y;
+    public Coordinates(CoordinatesBuilder coordinatesBuilder) {
+        x  = coordinatesBuilder.x;
+        y = coordinatesBuilder.y;
     }
     public Coordinates(){
 
     }
+    public static class CoordinatesBuilder {
+
+        private Float x;
+        private Float y;
+
+        //constructor for required fields
+        public CoordinatesBuilder(Float x, Float y) {
+            this.x = x;
+            this.y = y;
+        }
+        public Coordinates build() {
+            return new Coordinates(this);
+        }
+    }
+
     @XmlElement
     public Float getX() {
         return x;

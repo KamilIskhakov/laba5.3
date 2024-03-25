@@ -4,9 +4,7 @@ import DAO.CollectionManager;
 
 public class GroupCountingByNameCommand implements Command{
     private CollectionManager collectionManager;
-    public GroupCountingByNameCommand(CollectionManager collectionManager){
-        this.collectionManager = collectionManager;
-    }
+
     @Override
     public String getDescription() {
         return getName() + "сгруппировать элементы коллекции по значению поля name";

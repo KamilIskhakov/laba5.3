@@ -8,10 +8,7 @@ import DAO.CollectionManager;
 public class FilterLessThanLocationCommand implements Command{
     private CollectionManager collectionManager;
     private ShellPersonParametrs shellPersonParametrs;
-    public FilterLessThanLocationCommand(CollectionManager collectionManager, ShellPersonParametrs shellPersonParametrs){
-        this.collectionManager = collectionManager;
-        this.shellPersonParametrs = shellPersonParametrs;
-    }
+
     @Override
     public String getDescription() {
         return getName()+"выводит объекты коллекции, у которых поле location меньше заданного";

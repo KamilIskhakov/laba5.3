@@ -1,14 +1,14 @@
 package Client;
 
-import Controler.CommandManager;
+import Controler.CommandRequestManager;
 
 import java.util.Scanner;
 
 public class TerminalCommandShell implements Terminal{
-    private CommandManager commandManager;
+    private CommandRequestManager commandRequestManager;
 
-    public TerminalCommandShell(CommandManager commandManager) {
-        this.commandManager = commandManager;
+    public TerminalCommandShell(CommandRequestManager commandRequestManager) {
+        this.commandRequestManager = commandRequestManager;
     }
     @Override
     public void start() {
@@ -19,14 +19,14 @@ public class TerminalCommandShell implements Terminal{
             String commandLine = consoleInput[0];
             String argumentLine = consoleInput[1];
             try {
-                commandManager.execute(commandLine, argumentLine);
+                commandRequestManager.execute(commandLine, argumentLine);
             } catch (NullPointerException exp) {
                 System.out.println("Lol");
             }
         } else {
             String commandLine = consoleLine;
             try {
-                commandManager.execute(commandLine, "");
+                commandRequestManager.execute(commandLine, "");
             } catch (NullPointerException exp) {
                 System.out.println("Lol");
             }

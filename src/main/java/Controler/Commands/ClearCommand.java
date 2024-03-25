@@ -4,9 +4,7 @@ import DAO.CollectionManager;
 
 public class ClearCommand implements Command{
     private CollectionManager collectionManager;
-    public ClearCommand(CollectionManager collectionManager){
-        this.collectionManager = collectionManager;
-    }
+
     @Override
     public String getDescription() {
         return getName() + "очищает коллекцию";

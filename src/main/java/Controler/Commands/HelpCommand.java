@@ -1,6 +1,6 @@
 package Controler.Commands;
 
-import Controler.CommandManager;
+import Controler.CommandRequestManager;
 import DAO.ShellPersonParametrs;
 import DAO.CollectionManager;
 
@@ -27,7 +27,7 @@ public class HelpCommand implements Command{
     @Override
     public void execute(String argument) {
         if (argument.isEmpty()){
-            HashMap<String,Command> com = new CommandManager(collectionManager,shellPersonParametrs).getHashMap();
+            HashMap<String,Command> com = new CommandRequestManager(collectionManager,shellPersonParametrs).getHashMap();
             for (String command : com.keySet()){
                 Command item = com.get(command);
                 System.out.println(item.getDescription());

@@ -1,11 +1,11 @@
 package Client;
 
-import Controler.CommandManager;
+import Controler.CommandRequestManager;
 
 public class TerminalArgsShell {
-    private CommandManager commandManager;
+    private CommandRequestManager commandRequestManager;
 
-    public TerminalArgsShell(CommandManager commandManager) {
-        this.commandManager = commandManager;
+    public TerminalArgsShell(CommandRequestManager commandRequestManager) {
+        this.commandRequestManager = commandRequestManager;
     }
 }

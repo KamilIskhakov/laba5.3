@@ -5,10 +5,10 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import Client.*;
 public class ScriptReader {
-    private CommandManager commandManager;
+    private CommandRequestManager commandRequestManager;
     private String scriptpath;
-    public ScriptReader(CommandManager commandManager, String scriptpath){
-        this.commandManager = commandManager;
+    public ScriptReader(CommandRequestManager commandRequestManager, String scriptpath){
+        this.commandRequestManager = commandRequestManager;
         this.scriptpath = scriptpath;
     }
 
@@ -32,11 +32,11 @@ public class ScriptReader {
                 String[] scriptIn = Main.scriptLines.poll().split(" ");
                 String command = scriptIn[0];
                 String argument = scriptIn[1];
-                commandManager.execute(command,argument);
+                commandRequestManager.execute(command,argument);
             }
             else {
                 String command = Main.scriptLines.poll();
-                commandManager.execute(command,"");
+                commandRequestManager.execute(command,"");
             }
         }
         Main.script = false;

@@ -4,10 +4,6 @@ import DAO.CollectionManager;
 
 public class RemoveByIdCommand implements Command{
     private CollectionManager collectionManager;
-    public RemoveByIdCommand(CollectionManager collectionManager){
-        this.collectionManager = collectionManager;
-
-    }
     @Override
     public String getDescription() {
         return getName() + "удаляет элемент очереди по айди";

@@ -4,9 +4,7 @@ import DAO.CollectionManager;
 
 public class HeadCommand implements Command{
     private CollectionManager collectionManager;
-    public HeadCommand(CollectionManager collectionManager){
-        this.collectionManager = collectionManager;
-    }
+
     @Override
     public String getDescription() {
         return getName() + "выводит первый элемент очереди";

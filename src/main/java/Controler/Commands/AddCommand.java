@@ -10,9 +10,9 @@ import Exceptions.PersonAskException;
 public class AddCommand implements Command {
     private CollectionManager collectionManager;
     private ShellPersonParametrs shellPersonParametrs;
-    public AddCommand(CollectionManager collectionManager, ShellPersonParametrs shellPersonParametrs){
-        this.collectionManager = collectionManager;
-        this.shellPersonParametrs = shellPersonParametrs;
+
+    public AddCommand(){
+
     }
     @Override
     public String getDescription() {
@@ -25,7 +25,7 @@ public class AddCommand implements Command {
     }
 
     @Override
-    public void execute(String command) throws PersonAskException{
+    public void execute(String command) throws GiveParPersonException{
         try{
         if (command.isEmpty()) {
             Person person = new PersonAskManager().createPerson();
@@ -34,7 +34,7 @@ public class AddCommand implements Command {
                 System.out.println("Некорректный ввод");
             }
         }catch(GiveParPersonException e){
-                throw new PersonAskException(e.getParName());
+                throw e;
         }
     }
 }
