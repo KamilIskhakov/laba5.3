@@ -5,20 +5,24 @@ import CollectionObjects.Person;
 import Controler.Commands.AddCommand;
 import Controler.Commands.Command;
 import Exceptions.GiveParPersonException;
+import Exceptions.NotCorrectException;
 import lombok.Setter;
 
 public class AddHandler implements Handler{
     @Setter
     private Person person;
     private Command command;
+    public void CreateCommand(){
+        this.command = new AddCommand(person);
+    }
     @Override
-    public void handle(String args) throws GiveParPersonException{
+    public void handle(String args) throws GiveParPersonException, NotCorrectException {
         if (args == ""){
             throw new GiveParPersonException(this);
-            this.command = new AddCommand();
         }else{
-            Main.terminalOutputManager.println("");
+            throw new NotCorrectException();
         }
+
     }
 
 }

@@ -10,6 +10,7 @@ import Controler.Handlers.ClearHandler;
 import Controler.Handlers.Handler;
 import DAO.*;
 import Exceptions.GiveParPersonException;
+import Exceptions.NotCorrectException;
 
 public class CommandRequestManager {
     private HashMap<String, Handler> commands;
@@ -43,6 +44,8 @@ public class CommandRequestManager {
             Main.terminalOutputManager.println("Некорректный ввод команды");
         }catch (GiveParPersonException exp){
             throw exp;
+        }catch (NotCorrectException exp){
+            Main.terminalOutputManager.println("Некорректный ввод команд");
         }
         return null;
     }

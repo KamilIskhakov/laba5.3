@@ -10,9 +10,10 @@ import Exceptions.PersonAskException;
 public class AddCommand implements Command {
     private CollectionManager collectionManager;
     private ShellPersonParametrs shellPersonParametrs;
+    private Person person;
 
-    public AddCommand(){
-
+    public AddCommand(Person person){
+        this.person = person;
     }
     @Override
     public String getDescription() {

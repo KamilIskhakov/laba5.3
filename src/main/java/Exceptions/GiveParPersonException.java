@@ -14,6 +14,10 @@ public class GiveParPersonException extends Exception {
         }
     public void setPersonCom(Person person) {
         addHandler.setPerson(person);
+        addHandler.CreateCommand();
+    }
+    public AddHandler getAddHandler(){
+        return addHandler;
     }
 
 }

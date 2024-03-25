@@ -31,16 +31,16 @@ public class TerminalManager {
             try {
                 commandRequestManager.preparationForShipment(userLine[0], userLine[1]);
             } catch (GiveParPersonException e) {
-             e.setPersonCom(new Person.PersonBuilder(getAsk("введите имя:",String.class),
-             new Coordinates.CoordinatesBuilder(getAsk("",Float.class), getAsk("",Float.class)).build(),
-                     getAsk("",Double.class),getCountryAsk(""))
-                     .setColor(getColorAsk(""))
-                     .setHeight(getAsk("",Integer.class))
-                     .setLocation(new Location.LocationBuilder(getAsk("",String.class),getAsk("",Float.class))
-                     .setX(getAsk("", Integer.class))
-                     .setZ(getAsk("", Double.class)).build()).build());
-
+                e.setPersonCom(new Person.PersonBuilder(getAsk("введите имя:", String.class),
+                        new Coordinates.CoordinatesBuilder(getAsk("", Float.class), getAsk("", Float.class)).build(),
+                        getAsk("", Double.class), getCountryAsk(""))
+                        .setColor(getColorAsk(""))
+                        .setHeight(getAsk("", Integer.class))
+                        .setLocation(new Location.LocationBuilder(getAsk("", String.class), getAsk("", Float.class))
+                                .setX(getAsk("", Integer.class))
+                                .setZ(getAsk("", Double.class)).build()).build());
                     }
+
                 }
             }
         }
