@@ -1,9 +1,10 @@
 package Controler.Commands;
 
+import Client.Main;
 import DAO.CollectionManager;
+import Service.ServerEntryPoint;
 
 public class InfoCommand implements Command {
-    private CollectionManager collectionManager;
     @Override
     public String getDescription() {
         return getName() + "вывести информацию о коллекции";
@@ -15,11 +16,7 @@ public class InfoCommand implements Command {
     }
 
     @Override
-    public void execute(String argument) {
-        if (argument.isEmpty()) {
-            System.out.println(collectionManager.collectionInfo());
-        } else {
-            System.out.println("Некорректный ввод");
-        }
+    public void execute() {
+        Main.terminalOutputManager.println(ServerEntryPoint.collectionManager.collectionInfo());
     }
 }

@@ -8,28 +8,37 @@ import Exceptions.NotCorrectException;
 import com.github.drapostolos.typeparser.TypeParser;
 import com.github.drapostolos.typeparser.TypeParserException;
 import CollectionObjects.*;
+
 import java.util.HashMap;
 
 public class TerminalManager {
     private final CommandRequestManager commandRequestManager;
     private final TerminalInput inputManager;
     private final TerminalOutputManager outputManager;
-    private TypeParser parser;
+    private final TypeParser parser;
 
     public TerminalManager(CommandRequestManager commandRequestManager, TerminalInput inputManager, TerminalOutputManager outputManager) {
         this.commandRequestManager = commandRequestManager;
         this.inputManager = inputManager;
         this.outputManager = outputManager;
-        TypeParser parser = TypeParser.newBuilder().build();
+        this.parser = TypeParser.newBuilder().build();
 
     }
 
     public void start() {
         while (true) {
-            if (Main.script) {
-                for (String[] userLine : inputManager.scriptBox) {
             try {
-                commandRequestManager.preparationForShipment(userLine[0], userLine[1]);
+                if (Main.script) {
+                    if (!inputManager.scriptBox.isEmpty()){
+                    String[] readLine = inputManager.scriptBox.peek();
+                    commandRequestManager.preparationForShipment(readLine[0], readLine[1]);
+                    }else{
+                        Main.script = false;
+                    }
+                } else {
+                    String[] readLine = inputManager.readTerminal();
+                    commandRequestManager.preparationForShipment(readLine[0], readLine[1]);
+                }
             } catch (GiveParPersonException e) {
                 e.setPersonCom(new Person.PersonBuilder(getAsk("введите имя:", String.class),
                         new Coordinates.CoordinatesBuilder(getAsk("", Float.class), getAsk("", Float.class)).build(),
@@ -39,49 +48,49 @@ public class TerminalManager {
                         .setLocation(new Location.LocationBuilder(getAsk("", String.class), getAsk("", Float.class))
                                 .setX(getAsk("", Integer.class))
                                 .setZ(getAsk("", Double.class)).build()).build());
-                    }
-
-                }
+            } catch (NullPointerException e){
+                outputManager.printlnNotCorrectInput();
             }
         }
     }
 
-    public <T> T getAsk(String messageWellDone, Class<T> type){
+    public <T> T getAsk(String messageWellDone, Class<T> type) {
         if (Main.script) {
             try {
                 if ((inputManager.scriptBox.poll()[1]) != "") {
                     throw new NotCorrectException();
                 } else {
                     String arg = inputManager.scriptBox.poll()[0];
-                    T parsLine = parser.parse(arg,type);
+                    T parsLine = parser.parse(arg, type);
                     return parsLine;
 
                 }
 
-            } catch (NullPointerException | TypeParserException |NotCorrectException  e) {
+            } catch (NullPointerException | TypeParserException | NotCorrectException e) {
                 Main.script = false;
                 outputManager.printlnNotCorrectInput();
             }
-        }else{
+        } else {
             try {
                 outputManager.println(messageWellDone);
-                inputManager.readTerminal();
-                if ((inputManager.terminalBox.poll()[1]) != "") {
+                String[] readLine = inputManager.readTerminal();
+                if ((readLine[1]) != "") {
                     throw new NotCorrectException();
                 } else {
-                    String arg = inputManager.terminalBox.poll()[0];
-                    T parsLine = parser.parse(arg,type);
+                    String arg = readLine[0];
+                    T parsLine = parser.parse(arg, type);
                     return parsLine;
 
                 }
-            } catch (NullPointerException | TypeParserException |NotCorrectException  e) {
+            } catch (NullPointerException | TypeParserException | NotCorrectException e) {
                 outputManager.printlnNotCorrectInput();
-                return getAsk(messageWellDone,type);
+                return getAsk(messageWellDone, type);
             }
         }
         return null;
     }
-    public Color getColorAsk(String messageWellDone){
+
+    public Color getColorAsk(String messageWellDone) {
         if (Main.script) {
             try {
                 if ((inputManager.scriptBox.poll()[1]) != "") {
@@ -91,30 +100,31 @@ public class TerminalManager {
                     Color eyeColor = Color.valueOf(arg.toUpperCase());
                     return eyeColor;
                 }
-            } catch (NullPointerException | TypeParserException |NotCorrectException  e) {
+            } catch (NullPointerException | TypeParserException | NotCorrectException e) {
                 Main.script = false;
                 outputManager.printlnNotCorrectInput();
             }
-        }else{
+        } else {
             try {
                 outputManager.println(messageWellDone);
-                inputManager.readTerminal();
-                if ((inputManager.terminalBox.poll()[1]) != "") {
+                String[] readLine = inputManager.readTerminal();
+                if ((readLine[1]) != "") {
                     throw new NotCorrectException();
                 } else {
-                    String arg = inputManager.terminalBox.poll()[0];
+                    String arg = readLine[0];
                     Color eyeColor = Color.valueOf(arg.toUpperCase());
                     return eyeColor;
 
                 }
-            } catch (NullPointerException | TypeParserException |NotCorrectException  e) {
+            } catch (NullPointerException | TypeParserException | NotCorrectException e) {
                 outputManager.printlnNotCorrectInput();
                 return getColorAsk(messageWellDone);
             }
         }
         return null;
     }
-    public Country getCountryAsk(String messageWellDone){
+
+    public Country getCountryAsk(String messageWellDone) {
         if (Main.script) {
             try {
                 if ((inputManager.scriptBox.poll()[1]) != "") {
@@ -124,23 +134,23 @@ public class TerminalManager {
                     Country nationality = Country.valueOf(arg.toUpperCase());
                     return nationality;
                 }
-            } catch (NullPointerException | TypeParserException |NotCorrectException  e) {
+            } catch (NullPointerException | TypeParserException | NotCorrectException e) {
                 Main.script = false;
                 outputManager.printlnNotCorrectInput();
             }
-        }else{
+        } else {
             try {
                 outputManager.println(messageWellDone);
-                inputManager.readTerminal();
-                if ((inputManager.terminalBox.poll()[1]) != "") {
+                String[] readLine = inputManager.readTerminal();
+                if ((readLine[1]) != "") {
                     throw new NotCorrectException();
                 } else {
-                    String arg = inputManager.terminalBox.poll()[0];
+                    String arg = readLine[0];
                     Country nationality = Country.valueOf(arg.toUpperCase());
                     return nationality;
 
                 }
-            } catch (NullPointerException | TypeParserException |NotCorrectException  e) {
+            } catch (NullPointerException | TypeParserException | NotCorrectException e) {
                 outputManager.printlnNotCorrectInput();
                 return getCountryAsk(messageWellDone);
             }

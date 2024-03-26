@@ -7,6 +7,6 @@ import Exceptions.PersonAskException;
 public interface Command {
     String getDescription();
     String getName();
-    public void execute(String argument) throws GiveParPersonException;
+    public void execute();
 
 }

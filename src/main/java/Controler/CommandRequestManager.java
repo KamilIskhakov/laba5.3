@@ -34,19 +34,15 @@ public class CommandRequestManager {
         commands.put("exit", new ExitHandler());
     }
 
-    public Handler preparationForShipment(String commandName, String arguments) throws GiveParPersonException {
+    public void preparationForShipment(String commandName, String arguments) throws GiveParPersonException {
         try {
-        Handler handler =  commands.get(commandName);
-        handler.handle(arguments);
-        return handler;
-
-        } catch (NullPointerException exp) {
+            Handler handler = commands.get(commandName);
+            handler.handle(arguments);
+            Main.serverEntryPoint.performCom(handler);
+        } catch (NullPointerException | NotCorrectException exp) {
             Main.terminalOutputManager.println("Некорректный ввод команды");
-        }catch (GiveParPersonException exp){
+        } catch (GiveParPersonException exp) {
             throw exp;
-        }catch (NotCorrectException exp){
-            Main.terminalOutputManager.println("Некорректный ввод команд");
         }
-        return null;
     }
 }

@@ -46,6 +46,9 @@ public class TerminalOutputManager {
             e.printStackTrace();
         }
     }
+    public void printlnWriteCommand(){
+        println("Введите команду:");
+    }
 
 
     public void print(String string) {

@@ -1,9 +1,9 @@
 package Controler.Commands;
 
-import DAO.CollectionManager;
+import Client.Main;
+import Service.ServerEntryPoint;
 
 public class GroupCountingByNameCommand implements Command{
-    private CollectionManager collectionManager;
 
     @Override
     public String getDescription() {
@@ -16,17 +16,12 @@ public class GroupCountingByNameCommand implements Command{
     }
 
     @Override
-    public void execute(String argument) {
-        if (argument.isEmpty()) {
+    public void execute() {
             int count = 0;
-        for(int i : collectionManager.GroupPeople())   {
+        for(int i : ServerEntryPoint.collectionManager.GroupPeople())   {
             if (i>0){
-            System.out.println("Группа имён с длинной " + count + ": " + i);}
+            Main.terminalOutputManager.println("Группа имён с длинной " + count + ": " + i);}
             count += 1;
             }
-        }
-        else{
-            System.out.println("Некорректный ввод");
-        }
     }
 }

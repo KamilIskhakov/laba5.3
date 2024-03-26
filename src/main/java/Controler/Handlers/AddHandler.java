@@ -6,6 +6,7 @@ import Controler.Commands.AddCommand;
 import Controler.Commands.Command;
 import Exceptions.GiveParPersonException;
 import Exceptions.NotCorrectException;
+import lombok.Getter;
 import lombok.Setter;
 
 public class AddHandler implements Handler{
@@ -22,7 +23,10 @@ public class AddHandler implements Handler{
         }else{
             throw new NotCorrectException();
         }
-
+    }
+    @Override
+    public Command getCommand() {
+        return command;
     }
 
 }

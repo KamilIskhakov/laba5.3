@@ -12,12 +12,7 @@ public class ExitCommand implements Command{
     }
 
     @Override
-    public void execute(String argument) {
-        if (argument.isEmpty()) {
-            System.exit(0);
-        }
-        else{
-            System.out.println("Некорректный ввод");
-        }
+    public void execute() {
+        System.exit(0);
     }
 }

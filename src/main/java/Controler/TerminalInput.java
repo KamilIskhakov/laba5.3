@@ -12,26 +12,34 @@ import java.util.Scanner;
 import java.util.Stack;
 
 public class TerminalInput {
-    ArrayDeque<Scanner> scanners = new ArrayDeque<>();
-    ArrayDeque<String[]> terminalBox = new ArrayDeque<>();
+    private InputStream inputStream;
     ArrayDeque<String[]> scriptBox = new ArrayDeque<>();
     private final TerminalOutputManager outputManager;
 
     public TerminalInput(InputStream inputStream, TerminalOutputManager outputManager) {
-        scanners.push(new Scanner(inputStream));
+        this.inputStream = inputStream;
         this.outputManager = outputManager;
     }
 
-    public void readTerminal()  {
-        if (scanners.peek().hasNextLine()) {
-            if(scanners.peek().nextLine().contains(" ")){
-                terminalBox.add(scanners.peek().nextLine().split(" "));}
-            else{
-                terminalBox.add(new String[] {scanners.peek().nextLine(),""});
+    public String[] readTerminal() {
+        try {
+            Scanner scanners = new Scanner(inputStream);
+            if (scanners.hasNextLine()) {
+                if (scanners.nextLine().contains(" ")) {
+                    return scanners.nextLine().split(" ");
+                }
+            } else {
+                return new String[]{scanners.nextLine(), ""};
+
             }
-            scanners.poll();
+        } catch (Exception e) {
+            outputManager.println("Строка по какой-то причине не была прочитана");
+            outputManager.printlnWriteCommand();
         }
+
+        return new String[0];
     }
+
 
     public void readScript(String scriptPath) {
         Main.script = true;
@@ -41,11 +49,16 @@ public class TerminalInput {
             scriptScanner = new Scanner(scriptFile);
         } catch (FileNotFoundException e) {
             Main.script = false;
-            System.out.println("File is not founded");
+            System.out.println("Файл не найден");
         }
         if (scriptScanner != null) {
             while (scriptScanner.hasNextLine()) {
-                scriptBox.add(scriptScanner.nextLine().split(" "));
+                if (scriptScanner.nextLine().contains(" ")) {
+                    scriptBox.add(scriptScanner.nextLine().split(" "));
+                } else {
+                    scriptBox.add(new String[]{scriptScanner.nextLine(), ""});
+
+                }
             }
         }
     }

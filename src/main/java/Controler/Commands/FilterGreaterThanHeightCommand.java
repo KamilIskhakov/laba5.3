@@ -1,9 +1,10 @@
 package Controler.Commands;
 
 import DAO.CollectionManager;
+import Service.ServerEntryPoint;
 
 public class FilterGreaterThanHeightCommand implements Command{
-    private CollectionManager collectionManager;
+    private Integer argument;
 
     @Override
     public String getDescription() {
@@ -16,13 +17,7 @@ public class FilterGreaterThanHeightCommand implements Command{
     }
 
     @Override
-    public void execute(String argument) {
-        if (!argument.isEmpty()) {
-            Integer height = Integer.parseInt(argument);
-            collectionManager.FilterGreaterThanHeight(height);
-        }
-        else{
-            System.out.println("Некорректный ввод");
-        }
+    public void execute() {
+        ServerEntryPoint.collectionManager.FilterGreaterThanHeight(argument);
     }
 }

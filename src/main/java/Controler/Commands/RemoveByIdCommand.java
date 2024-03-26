@@ -1,9 +1,11 @@
 package Controler.Commands;
 
+import Client.Main;
 import DAO.CollectionManager;
+import Service.ServerEntryPoint;
 
 public class RemoveByIdCommand implements Command{
-    private CollectionManager collectionManager;
+    private Integer argument;
     @Override
     public String getDescription() {
         return getName() + "удаляет элемент очереди по айди";
@@ -15,14 +17,7 @@ public class RemoveByIdCommand implements Command{
     }
 
     @Override
-    public void execute(String argument) {
-        if (!argument.isEmpty()) {
-            Integer id = Integer.parseInt(argument);
-            collectionManager.removeCollectionById(id);
-        }
-        else{
-            System.out.println("Некорректный ввод");
-        }
-
+    public void execute() {
+        ServerEntryPoint.collectionManager.removeCollectionById(argument);
     }
 }

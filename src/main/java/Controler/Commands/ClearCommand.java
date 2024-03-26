@@ -1,9 +1,10 @@
 package Controler.Commands;
 
+import Client.Main;
 import DAO.CollectionManager;
+import Service.ServerEntryPoint;
 
 public class ClearCommand implements Command{
-    private CollectionManager collectionManager;
 
     @Override
     public String getDescription() {
@@ -16,12 +17,7 @@ public class ClearCommand implements Command{
     }
 
     @Override
-    public void execute(String argument) {
-        if (argument.isEmpty()) {
-            collectionManager.clear();
-        }
-        else{
-            System.out.println("Некорректный ввод");
-        }
+    public void execute() {
+        ServerEntryPoint.collectionManager.clear();
     }
 }

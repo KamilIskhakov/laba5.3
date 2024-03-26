@@ -1,13 +1,11 @@
 package Controler.Commands;
 
 import CollectionObjects.Location;
-import Service.LocationCreateHelper;
-import DAO.ShellPersonParametrs;
 import DAO.CollectionManager;
+import Service.ServerEntryPoint;
 
 public class FilterLessThanLocationCommand implements Command{
-    private CollectionManager collectionManager;
-    private ShellPersonParametrs shellPersonParametrs;
+    private Location location;
 
     @Override
     public String getDescription() {
@@ -20,13 +18,7 @@ public class FilterLessThanLocationCommand implements Command{
     }
 
     @Override
-    public void execute(String argument) {
-        if (argument.isEmpty()) {
-        Location location = new LocationCreateHelper(shellPersonParametrs).createLocation();
-        collectionManager.FilterLessThanLocation(location);
-        }
-        else{
-            System.out.println("Некорректный ввод");
-        }
+    public void execute() {
+        ServerEntryPoint.collectionManager.FilterLessThanLocation(location);
     }
 }
