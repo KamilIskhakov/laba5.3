@@ -94,11 +94,11 @@ public class Person implements Comparable<Location>{
     public double getWeight() {
         return weight;
     }
-    @XmlElement
+
     public Color getEyeColor() {
         return eyeColor;
     }
-    @XmlElement
+
     public Country getNationality() {
         return nationality;
     }

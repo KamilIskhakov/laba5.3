@@ -54,7 +54,7 @@ public class CollectionManager {
     }
     public void clear() {
         personcollection.clear();
-    }
+    } 
     public int[] GroupPeople(){
         Object[] arrayObjectPeople = personcollection.toArray();
         Person[] arrayPeople = new Person[arrayObjectPeople.length];
