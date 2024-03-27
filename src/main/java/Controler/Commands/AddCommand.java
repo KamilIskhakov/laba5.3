@@ -1,7 +1,7 @@
 package Controler.Commands;
 
 import CollectionObjects.Person;
-import DAO.CollectionManager;
+import Controler.Command;
 import Service.ServerEntryPoint;
 
 public class AddCommand implements Command {
@@ -23,6 +23,5 @@ public class AddCommand implements Command {
     @Override
     public void execute(){
         ServerEntryPoint.collectionManager.addToCollection(person);
-
     }
 }

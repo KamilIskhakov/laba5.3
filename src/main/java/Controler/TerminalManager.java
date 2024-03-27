@@ -3,13 +3,10 @@ package Controler;
 import Client.Main;
 import CollectionObjects.Coordinates;
 import CollectionObjects.Person;
-import Exceptions.GiveParPersonException;
 import Exceptions.NotCorrectException;
 import com.github.drapostolos.typeparser.TypeParser;
 import com.github.drapostolos.typeparser.TypeParserException;
 import CollectionObjects.*;
-
-import java.util.HashMap;
 
 public class TerminalManager {
     private final CommandRequestManager commandRequestManager;
@@ -30,25 +27,17 @@ public class TerminalManager {
             try {
                 if (Main.script) {
                     if (!inputManager.scriptBox.isEmpty()){
-                    String[] readLine = inputManager.scriptBox.peek();
+                    String[] readLine = inputManager.scriptBox.pop();
                     commandRequestManager.preparationForShipment(readLine[0], readLine[1]);
                     }else{
                         Main.script = false;
                     }
                 } else {
+                    outputManager.printlnWriteCommand();
                     String[] readLine = inputManager.readTerminal();
                     commandRequestManager.preparationForShipment(readLine[0], readLine[1]);
                 }
-            } catch (GiveParPersonException e) {
-                e.setPersonCom(new Person.PersonBuilder(getAsk("введите имя:", String.class),
-                        new Coordinates.CoordinatesBuilder(getAsk("", Float.class), getAsk("", Float.class)).build(),
-                        getAsk("", Double.class), getCountryAsk(""))
-                        .setColor(getColorAsk(""))
-                        .setHeight(getAsk("", Integer.class))
-                        .setLocation(new Location.LocationBuilder(getAsk("", String.class), getAsk("", Float.class))
-                                .setX(getAsk("", Integer.class))
-                                .setZ(getAsk("", Double.class)).build()).build());
-            } catch (NullPointerException e){
+            }catch (NullPointerException e){
                 outputManager.printlnNotCorrectInput();
             }
         }
@@ -116,7 +105,7 @@ public class TerminalManager {
                     return eyeColor;
 
                 }
-            } catch (NullPointerException | TypeParserException | NotCorrectException e) {
+            } catch (NullPointerException | TypeParserException | NotCorrectException | IllegalArgumentException e) {
                 outputManager.printlnNotCorrectInput();
                 return getColorAsk(messageWellDone);
             }
@@ -150,13 +139,29 @@ public class TerminalManager {
                     return nationality;
 
                 }
-            } catch (NullPointerException | TypeParserException | NotCorrectException e) {
+            } catch (NullPointerException | TypeParserException | NotCorrectException | IllegalArgumentException e) {
                 outputManager.printlnNotCorrectInput();
                 return getCountryAsk(messageWellDone);
             }
         }
         return null;
     }
-
+    public Person MakeMePerson(){
+        return
+        new Person.PersonBuilder(getAsk("введите имя:", String.class),
+        new Coordinates.CoordinatesBuilder(getAsk("введите икс", Float.class), getAsk("введите игрик", Float.class)).build(),
+        getAsk("введите вес", Double.class), getCountryAsk("введи страну"))
+        .setColor(getColorAsk("введи цвет"))
+        .setHeight(getAsk("введи рост", Integer.class))
+        .setLocation(new Location.LocationBuilder(getAsk("введи название места", String.class), getAsk("введите икс", Float.class))
+        .setX(getAsk("введите игрик", Integer.class))
+        .setZ(getAsk("введите зет", Double.class)).build()).build();
+    }
+    public Location MakeMeLocation(){
+        return
+        new Location.LocationBuilder(getAsk("", String.class), getAsk("", Float.class))
+        .setX(getAsk("", Integer.class))
+        .setZ(getAsk("", Double.class)).build();
+    }
 
 }

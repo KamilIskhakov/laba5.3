@@ -1,10 +1,9 @@
 package Controler.Commands;
 
-import Client.Main;
-import DAO.CollectionManager;
+import Controler.Command;
 import Service.ServerEntryPoint;
 
-public class ClearCommand implements Command{
+public class ClearCommand implements Command {
 
     @Override
     public String getDescription() {

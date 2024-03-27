@@ -1,11 +1,13 @@
 package Controler.Commands;
 
-import Client.Main;
-import DAO.CollectionManager;
+import Controler.Command;
 import Service.ServerEntryPoint;
 
-public class RemoveByIdCommand implements Command{
+public class RemoveByIdCommand implements Command {
     private Integer argument;
+    public RemoveByIdCommand(Integer argument){
+        this.argument = argument;
+    }
     @Override
     public String getDescription() {
         return getName() + "удаляет элемент очереди по айди";

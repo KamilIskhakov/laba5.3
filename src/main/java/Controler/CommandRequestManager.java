@@ -1,15 +1,8 @@
 package Controler;
 
 import Client.Main;
-import Controler.Commands.*;
-
 import java.util.HashMap;
-
-import Controler.Handlers.AddHandler;
-import Controler.Handlers.ClearHandler;
-import Controler.Handlers.Handler;
-import DAO.*;
-import Exceptions.GiveParPersonException;
+import Controler.Handlers.*;
 import Exceptions.NotCorrectException;
 
 public class CommandRequestManager {
@@ -34,15 +27,13 @@ public class CommandRequestManager {
         commands.put("exit", new ExitHandler());
     }
 
-    public void preparationForShipment(String commandName, String arguments) throws GiveParPersonException {
+    public void preparationForShipment(String commandName, String arguments){
         try {
             Handler handler = commands.get(commandName);
             handler.handle(arguments);
             Main.serverEntryPoint.performCom(handler);
         } catch (NullPointerException | NotCorrectException exp) {
             Main.terminalOutputManager.println("Некорректный ввод команды");
-        } catch (GiveParPersonException exp) {
-            throw exp;
         }
     }
 }

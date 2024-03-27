@@ -32,6 +32,8 @@ public class CollectionManager {
     }
 
     public void addToCollection(Person person) {
+        person.setId(generateId());
+        person.setCreationDate(new Date());
         personcollection.add(person);
     }
 
@@ -96,6 +98,8 @@ public class CollectionManager {
         Person[] arrayPeople = new Person[arrayObjectPeople.length];
         for (int i = 0; i < arrayPeople.length; i++) {
             arrayPeople[i] = (Person) arrayObjectPeople[i];
+            arrayPeople[i].setCreationDate(new Date());
+            arrayPeople[i].setId(generateId());
             if (Objects.equals(arrayPeople[i].getId(), id)) {
                 arrayPeople[i] = userPerson;
             }
@@ -119,9 +123,6 @@ public class CollectionManager {
         return id;
     }
 
-    /**
-     * @return string with collection's class, date of creation and size
-     */
     public String collectionInfo() {
         return "Collection type: " + personcollection.getClass().getName() + "\n"
                 + "Date of initialization: " + dateOfInitialization + "\n"

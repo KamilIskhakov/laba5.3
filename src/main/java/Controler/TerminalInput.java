@@ -24,19 +24,18 @@ public class TerminalInput {
     public String[] readTerminal() {
         try {
             Scanner scanners = new Scanner(inputStream);
-            if (scanners.hasNextLine()) {
-                if (scanners.nextLine().contains(" ")) {
-                    return scanners.nextLine().split(" ");
-                }
+            String readline = scanners.nextLine();
+            if (readline.contains(" ")) {
+                return readline.split(" ");
+
             } else {
-                return new String[]{scanners.nextLine(), ""};
+                return new String[]{readline,""};
 
             }
         } catch (Exception e) {
             outputManager.println("Строка по какой-то причине не была прочитана");
             outputManager.printlnWriteCommand();
         }
-
         return new String[0];
     }
 
@@ -53,11 +52,11 @@ public class TerminalInput {
         }
         if (scriptScanner != null) {
             while (scriptScanner.hasNextLine()) {
-                if (scriptScanner.nextLine().contains(" ")) {
-                    scriptBox.add(scriptScanner.nextLine().split(" "));
+                String readLine = scriptScanner.nextLine();
+                if (readLine.contains(" ")) {
+                    scriptBox.add(readLine.split(" "));
                 } else {
-                    scriptBox.add(new String[]{scriptScanner.nextLine(), ""});
-
+                    scriptBox.add(new String[]{readLine, ""});
                 }
             }
         }

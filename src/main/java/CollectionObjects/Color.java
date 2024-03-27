@@ -1,6 +1,6 @@
 package CollectionObjects;
 
-public enum Color implements PersonComposite{
+public enum Color {
     BLACK,
     BLUE,
     ORANGE;
@@ -12,8 +12,5 @@ public enum Color implements PersonComposite{
         return nameList.substring(0, nameList.length()-2);
     }
 
-    @Override
-    public String getNameComposite() {
-        return null;
-    }
+
 }

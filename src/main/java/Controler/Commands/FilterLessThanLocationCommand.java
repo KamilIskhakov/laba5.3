@@ -1,11 +1,14 @@
 package Controler.Commands;
 
 import CollectionObjects.Location;
-import DAO.CollectionManager;
+import Controler.Command;
 import Service.ServerEntryPoint;
 
-public class FilterLessThanLocationCommand implements Command{
+public class FilterLessThanLocationCommand implements Command {
     private Location location;
+    public FilterLessThanLocationCommand(Location location){
+        this.location = location;
+    }
 
     @Override
     public String getDescription() {

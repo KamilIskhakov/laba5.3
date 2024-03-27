@@ -1,10 +1,9 @@
 package Controler.Commands;
 
-import DAO.CollectionManager;
+import Controler.Command;
 import Service.ServerEntryPoint;
 
-public class ShowCommand implements Command{
-
+public class ShowCommand implements Command {
     @Override
     public String getDescription() {
         return getName() + "выводит элементы коллекции";

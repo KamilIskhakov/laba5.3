@@ -1,12 +1,16 @@
 package Controler.Commands;
 
 import CollectionObjects.Person;
-import DAO.CollectionManager;
+import Controler.Command;
 import Service.ServerEntryPoint;
 
-public class UpdateCommand implements Command{
+public class UpdateCommand implements Command {
     private Integer argument;
     private Person person;
+    public UpdateCommand(Integer argument, Person person){
+        this.argument = argument;
+        this.person =person;
+    }
     @Override
     public String getDescription() {
         return getName() + "заменяет на новый объект по айди";

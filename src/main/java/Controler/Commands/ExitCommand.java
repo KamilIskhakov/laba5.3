@@ -1,6 +1,8 @@
 package Controler.Commands;
 
-public class ExitCommand implements Command{
+import Controler.Command;
+
+public class ExitCommand implements Command {
     @Override
     public String getDescription() {
         return getName() + "прерывает программу без сохранения";

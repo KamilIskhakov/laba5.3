@@ -1,10 +1,10 @@
 package Controler.Handlers;
 
-import Controler.Commands.Command;
-import Exceptions.GiveParPersonException;
+import Controler.Command;
 import Exceptions.NotCorrectException;
 
 public interface Handler {
-    public void handle(String args) throws GiveParPersonException, NotCorrectException;
+    public void handle(String args) throws NotCorrectException;
     public Command getCommand();
+    public void CreateCommand();
 }

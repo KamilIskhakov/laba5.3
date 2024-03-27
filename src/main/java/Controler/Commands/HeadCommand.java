@@ -1,11 +1,10 @@
 package Controler.Commands;
 
 import Client.Main;
-import DAO.CollectionManager;
+import Controler.Command;
 import Service.ServerEntryPoint;
 
-public class HeadCommand implements Command{
-
+public class HeadCommand implements Command {
     @Override
     public String getDescription() {
         return getName() + "выводит первый элемент очереди";

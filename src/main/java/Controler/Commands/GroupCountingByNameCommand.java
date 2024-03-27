@@ -1,9 +1,10 @@
 package Controler.Commands;
 
 import Client.Main;
+import Controler.Command;
 import Service.ServerEntryPoint;
 
-public class GroupCountingByNameCommand implements Command{
+public class GroupCountingByNameCommand implements Command {
 
     @Override
     public String getDescription() {

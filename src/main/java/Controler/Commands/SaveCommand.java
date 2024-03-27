@@ -1,9 +1,9 @@
 package Controler.Commands;
 
-import DAO.CollectionManager;
+import Controler.Command;
 import Service.ServerEntryPoint;
 
-public class SaveCommand implements Command{
+public class SaveCommand implements Command {
 
     @Override
     public String getDescription() {

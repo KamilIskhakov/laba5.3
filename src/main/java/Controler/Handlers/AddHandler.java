@@ -3,23 +3,23 @@ package Controler.Handlers;
 import Client.Main;
 import CollectionObjects.Person;
 import Controler.Commands.AddCommand;
-import Controler.Commands.Command;
-import Exceptions.GiveParPersonException;
+import Controler.Command;
 import Exceptions.NotCorrectException;
-import lombok.Getter;
 import lombok.Setter;
 
 public class AddHandler implements Handler{
-    @Setter
     private Person person;
     private Command command;
+
+    @Override
     public void CreateCommand(){
         this.command = new AddCommand(person);
     }
     @Override
-    public void handle(String args) throws GiveParPersonException, NotCorrectException {
+    public void handle(String args) throws NotCorrectException {
         if (args == ""){
-            throw new GiveParPersonException(this);
+            this.person = Main.terminalManager.MakeMePerson();
+            CreateCommand();
         }else{
             throw new NotCorrectException();
         }

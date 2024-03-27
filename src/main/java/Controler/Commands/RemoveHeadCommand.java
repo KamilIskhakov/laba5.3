@@ -1,9 +1,9 @@
 package Controler.Commands;
 
-import DAO.CollectionManager;
+import Controler.Command;
 import Service.ServerEntryPoint;
 
-public class RemoveHeadCommand implements Command{
+public class RemoveHeadCommand implements Command {
 
     @Override
     public String getDescription() {

@@ -1,11 +1,13 @@
 package Controler.Commands;
 
-import DAO.CollectionManager;
+import Controler.Command;
 import Service.ServerEntryPoint;
 
-public class FilterGreaterThanHeightCommand implements Command{
+public class FilterGreaterThanHeightCommand implements Command {
     private Integer argument;
-
+    public FilterGreaterThanHeightCommand(Integer argument){
+        this.argument = argument;
+    }
     @Override
     public String getDescription() {
         return getName() + "выводит объекты коллекции, у которых поле height меньше заданного";

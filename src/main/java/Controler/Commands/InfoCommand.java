@@ -1,7 +1,7 @@
 package Controler.Commands;
 
 import Client.Main;
-import DAO.CollectionManager;
+import Controler.Command;
 import Service.ServerEntryPoint;
 
 public class InfoCommand implements Command {

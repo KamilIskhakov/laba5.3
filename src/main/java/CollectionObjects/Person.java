@@ -3,6 +3,7 @@ package CollectionObjects;
 
 import Client.Main;
 import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 
 import jakarta.xml.bind.annotation.XmlElement;
@@ -12,7 +13,7 @@ import java.util.Date;
 
 
 @XmlRootElement(name = "person")
-@XmlType(propOrder = { "id","creationDate", "name", "coordinates", "height", "weight", "eyeColor", "nationality", "location"})
+@XmlType(propOrder = {"name", "coordinates", "height", "weight", "eyeColor", "nationality", "location", "id","creationDate"})
 public class Person implements Comparable<Location>{
     private Integer id; //no null
     private String name; //no null
@@ -36,10 +37,10 @@ public class Person implements Comparable<Location>{
     public Person(){
     }
     public static class PersonBuilder {
-        private Integer id; //no null
+        //no null
         private String name; //no null
         private Coordinates coordinates; //no null
-        private Date creationDate; //no null
+        // no null
         private Integer height;
         private double weight; // > 0
         private Color eyeColor;
@@ -93,10 +94,11 @@ public class Person implements Comparable<Location>{
     public double getWeight() {
         return weight;
     }
+    @XmlElement
     public Color getEyeColor() {
         return eyeColor;
     }
-
+    @XmlElement
     public Country getNationality() {
         return nationality;
     }
