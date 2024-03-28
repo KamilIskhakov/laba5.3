@@ -11,3 +11,4 @@
 
 [очень простая библиотека парсера дженерика](https://github.com/drapostolos/type-parser/wiki)
 
+[MIT библиотека паттернов для джавы](https://github.com/VxDxK/java-design-patterns/blob/master/localization/ru/README.md)
