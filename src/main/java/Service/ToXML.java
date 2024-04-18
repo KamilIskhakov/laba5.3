@@ -7,6 +7,7 @@ import jakarta.xml.bind.Marshaller;
 
 
 import java.io.BufferedOutputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -17,10 +18,8 @@ public class ToXML {
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             marshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
-            BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(new FileOutputStream(fileName));
-            marshaller.marshal(collectionManager, bufferedOutputStream);
-            bufferedOutputStream.close();
-        } catch (JAXBException | IOException e) {
+            marshaller.marshal(collectionManager, new File(fileName));
+        } catch (JAXBException e) {
             System.out.println(e);
         }
     }

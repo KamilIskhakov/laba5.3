@@ -11,11 +11,6 @@ public final class CollectionCreator {
     private CollectionCreator() {
     }
 
-    /**
-     * builds new Collection Manager from xml-file
-     * @param filePath to the xml-file
-     * @return new Collection Manager
-     */
     public static CollectionManager load(String filePath){
         File file = new File(filePath);
         CollectionManager collectionManager;

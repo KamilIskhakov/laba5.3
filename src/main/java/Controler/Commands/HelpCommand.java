@@ -20,28 +20,28 @@ public class HelpCommand implements Command {
 
     @Override
     public void execute() {
-            ArrayList<String[]> help_out = new ArrayList<>();
-            File directory = new File("src/main/java/Controler/Commands"); //ссылка папку, в которой хранятся все команды
-            String[] commandClasses = directory.list(); //массив из названий всех элементов в папке
+        ArrayList<String[]> help_out = new ArrayList<>();
+        File directory = new File("src/main/java/Controler/Commands"); //ссылка папку, в которой хранятся все команды
+        String[] commandClasses = directory.list(); //массив из названий всех элементов в папке
 
-            for (String filename : commandClasses) {
-                if (filename.endsWith(".java")) {
-                    String[] com_desc = new String[2];
-                    com_desc[0] = filename.replace(".java", "").toLowerCase(); //название команды
-                    try {
-                        Class cls = Class.forName("Commands." + filename.replace(".java", ""));
-                        Command commandClassObject = (Command) cls.newInstance();
-                        com_desc[1] = commandClassObject.getDescription();
-                    } catch (Exception ignored) {
-                    }
-                    help_out.add(com_desc);
+        for (String filename : commandClasses) {
+            if (filename.endsWith(".java")) {
+                String[] com_desc = new String[2];
+                com_desc[0] = filename.replace(".java", "").toLowerCase(); //название команды
+                try {
+                    Class cls = Class.forName("Commands." + filename.replace(".java", ""));
+                    Command commandClassObject = (Command) cls.getConstructor().newInstance();
+                    com_desc[1] = commandClassObject.getDescription();
+                } catch (Exception ignored) {
                 }
+                help_out.add(com_desc);
             }
-            String output = "";
-            output += "Доступные команды:\n";
-            for (String[] comhelp : help_out) {
-                output += "   " + comhelp[0] + " : " + comhelp[1] + "\n";
-            }
-            Main.terminalOutputManager.println(output);
+        }
+        String output = "";
+        output += "Доступные команды:\n";
+        for (String[] comhelp : help_out) {
+            output += "   " + comhelp[0] + " : " + comhelp[1] + "\n";
+        }
+        Main.terminalOutputManager.println(output);
     }
 }

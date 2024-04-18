@@ -2,29 +2,24 @@ package CollectionObjects;
 
 
 import Client.Main;
-import jakarta.xml.bind.annotation.XmlRootElement;
-import jakarta.xml.bind.annotation.XmlTransient;
-import jakarta.xml.bind.annotation.XmlType;
-
-import jakarta.xml.bind.annotation.XmlElement;
-import lombok.Builder;
+import jakarta.xml.bind.annotation.*;
 
 import java.util.Date;
 
-
+// если используете джакарту для парсинга в xml, учтите, что порядок геттеров для нанесения ярлыков важен,
+// он какой же, как в xmltype
 @XmlRootElement(name = "person")
 @XmlType(propOrder = {"name", "coordinates", "height", "weight", "eyeColor", "nationality", "location", "id","creationDate"})
 public class Person implements Comparable<Location>{
-    private Integer id; //no null
     private String name; //no null
     private Coordinates coordinates; //no null
-    private Date creationDate; //no null
     private Integer height;
     private double weight; // > 0
     private Color eyeColor;
     private Country nationality; //no null
     private Location location;
-
+    private Integer id; //no null
+    private Date creationDate; //no null
     public Person(PersonBuilder personBuilder) {
         name = personBuilder.name;
         coordinates = personBuilder.coordinates;
@@ -71,20 +66,12 @@ public class Person implements Comparable<Location>{
         }
     }
     @XmlElement
-    public Integer getId() {
-        return id;
-    }
-
     public String getName() {
         return name;
     }
     @XmlElement
     public Coordinates getCoordinates() {
         return coordinates;
-    }
-    @XmlElement
-    public Date getCreationDate() {
-        return creationDate;
     }
     @XmlElement
     public Integer getHeight() {
@@ -94,11 +81,11 @@ public class Person implements Comparable<Location>{
     public double getWeight() {
         return weight;
     }
-
+    @XmlElement
     public Color getEyeColor() {
         return eyeColor;
     }
-
+    @XmlElement
     public Country getNationality() {
         return nationality;
     }
@@ -106,11 +93,47 @@ public class Person implements Comparable<Location>{
     public Location getLocation(){
         return location;
     }
-
+    @XmlAttribute
+    public Integer getId() {
+        return id;
+    }
+    @XmlAttribute
+    public Date getCreationDate() {
+        return creationDate;
+    }
     public int compareTo(Person personObj) {
         return id.compareTo(personObj.getId());
 
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCoordinates(Coordinates coordinates) {
+        this.coordinates = coordinates;
+    }
+
+    public void setHeight(Integer height) {
+        this.height = height;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public void setEyeColor(Color eyeColor) {
+        this.eyeColor = eyeColor;
+    }
+
+    public void setNationality(Country nationality) {
+        this.nationality = nationality;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
     public String toString() {
         String info = "";
         info += "Человек" + id;

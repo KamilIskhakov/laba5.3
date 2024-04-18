@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<personList>
+    <person id="2" creationDate="2024-04-18T23:18:28.746+03:00">
+        <name>droch</name>
+        <coordinates/>
+        <height>12</height>
+        <weight>123.0</weight>
+        <eyeColor>BLACK</eyeColor>
+        <nationality>FRANCE</nationality>
+        <location>
+            <x>0</x>
+            <z>0.0</z>
+        </location>
+    </person>
+    <dateOfInitialization>2024-04-18T22:21:48.442+03:00</dateOfInitialization>
+    <filePath>save.xml</filePath>
+</personList>

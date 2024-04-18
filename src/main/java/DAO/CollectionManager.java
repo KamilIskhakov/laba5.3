@@ -1,13 +1,15 @@
 package DAO;
 
+import Client.Main;
 import CollectionObjects.Location;
 import CollectionObjects.Person;
 import Service.ToXML;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.*;
 
 import java.util.*;
+
 @XmlRootElement(name = "personList")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class CollectionManager {
     @XmlElement(name = "person")
     private ArrayDeque<Person> personcollection = new ArrayDeque<>();
@@ -19,43 +21,50 @@ public class CollectionManager {
         this.filePath = filePath;
     }
 
-    public CollectionManager(){
+    public CollectionManager() {
     }
-    private ArrayDeque<Person> getCollection(){
+
+    private ArrayDeque<Person> getCollection() {
         return personcollection;
     }
+
     public void setFilePath(String filePath) {
         this.filePath = filePath;
     }
-    private void setPersonCollection(ArrayDeque<Person> people){
+
+    private void setPersonCollection(ArrayDeque<Person> people) {
         personcollection = people;
     }
 
     public void addToCollection(Person person) {
         person.setId(generateId());
         person.setCreationDate(new Date());
-        personcollection.add(person);
+        personcollection.addLast(person);
     }
 
-    public void removeCollectionById(Integer id){
-        for(Person person : personcollection)
-                if(Objects.equals(person.getId(), id))
-                    personcollection.remove(person);
+    public void removeCollectionById(Integer id) {
+        for (Person person : personcollection)
+            if (Objects.equals(person.getId(), id))
+                personcollection.remove(person);
     }
-    public void removeHead(){
+
+    public void removeHead() {
         personcollection.poll();
     }
-    public String showHead(){
+
+    public String showHead() {
         return personcollection.getFirst().toString();
     }
 
     public void save() {
         ToXML.convertToXML(this, filePath);
     }
+
     public void clear() {
         personcollection.clear();
-    } 
-    public int[] GroupPeople(){
+    }
+
+    public int[] GroupPeople() {
         Object[] arrayObjectPeople = personcollection.toArray();
         Person[] arrayPeople = new Person[arrayObjectPeople.length];
         int[] countName = new int[1024];
@@ -66,32 +75,36 @@ public class CollectionManager {
         }
         return countName;
     }
+
     public void FilterGreaterThanHeight(Integer height) {
-            Object[] arrayObjectPeople = personcollection.toArray();
-            Person[] arrayPeople = new Person[arrayObjectPeople.length];
-            for (int i = 0; i < arrayPeople.length; i++) {
-                arrayPeople[i] = (Person) arrayObjectPeople[i];
-                if(arrayPeople[i].getHeight() > height ) {
-                    System.out.print(arrayPeople[i].getName()+" ");
-                }
+        Object[] arrayObjectPeople = personcollection.toArray();
+        Person[] arrayPeople = new Person[arrayObjectPeople.length];
+        for (int i = 0; i < arrayPeople.length; i++) {
+            arrayPeople[i] = (Person) arrayObjectPeople[i];
+            if (arrayPeople[i].getHeight() > height) {
+                Main.terminalOutputManager.print(arrayPeople[i].getName() + " ");
             }
         }
+    }
+
     public void FilterLessThanLocation(Location location) {
-            Object[] arrayObjectPeople = personcollection.toArray();
-            Person[] arrayPeople = new Person[arrayObjectPeople.length];
-            for (int i = 0; i < arrayPeople.length; i++) {
-                arrayPeople[i] = (Person) arrayObjectPeople[i];
-                if(arrayPeople[i].compareTo(location) < 0 ) {
-                    System.out.print(arrayPeople[i].getName()+" ");
-                }
+        Object[] arrayObjectPeople = personcollection.toArray();
+        Person[] arrayPeople = new Person[arrayObjectPeople.length];
+        for (int i = 0; i < arrayPeople.length; i++) {
+            arrayPeople[i] = (Person) arrayObjectPeople[i];
+            if (arrayPeople[i].compareTo(location) < 0) {
+                Main.terminalOutputManager.print(arrayPeople[i].getName() + " ");
             }
-    }
-    public void showCollection() {
-        for(Person person : personcollection){
-            System.out.print(person.getName()+" ");
         }
-        System.out.println(" ");
     }
+
+    public void showCollection() {
+        for (Person person : personcollection) {
+            Main.terminalOutputManager.print(person.getName() + " ");
+        }
+        Main.terminalOutputManager.println(" ");
+    }
+
     public void update(Person userPerson, Integer id) {
         ArrayDeque<Person> people = new ArrayDeque<>();
         Object[] arrayObjectPeople = personcollection.toArray();
@@ -107,13 +120,14 @@ public class CollectionManager {
         }
         setPersonCollection(people);
     }
+
     public Integer generateId() {
         int count = 0;
         int id = 1;
-        while(count != personcollection.size()) {
-            for(Person person : personcollection) {
+        while (count != personcollection.size()) {
+            for (Person person : personcollection) {
                 count++;
-                if(person.getId() == id) {
+                if (person.getId() == id) {
                     id++;
                     count = 0;
                     break;

@@ -26,10 +26,10 @@ public class TerminalManager {
         while (true) {
             try {
                 if (Main.script) {
-                    if (!inputManager.scriptBox.isEmpty()){
-                    String[] readLine = inputManager.scriptBox.pop();
-                    commandRequestManager.preparationForShipment(readLine[0], readLine[1]);
-                    }else{
+                    if (!inputManager.scriptBox.isEmpty()) {
+                        String[] readLine = inputManager.scriptBox.pop();
+                        commandRequestManager.preparationForShipment(readLine[0], readLine[1]);
+                    } else {
                         Main.script = false;
                     }
                 } else {
@@ -37,7 +37,7 @@ public class TerminalManager {
                     String[] readLine = inputManager.readTerminal();
                     commandRequestManager.preparationForShipment(readLine[0], readLine[1]);
                 }
-            }catch (NullPointerException e){
+            } catch (NullPointerException e) {
                 outputManager.printlnNotCorrectInput();
             }
         }
@@ -146,22 +146,24 @@ public class TerminalManager {
         }
         return null;
     }
-    public Person MakeMePerson(){
+
+    public Person MakeMePerson() {
         return
-        new Person.PersonBuilder(getAsk("введите имя:", String.class),
-        new Coordinates.CoordinatesBuilder(getAsk("введите икс", Float.class), getAsk("введите игрик", Float.class)).build(),
-        getAsk("введите вес", Double.class), getCountryAsk("введи страну"))
-        .setColor(getColorAsk("введи цвет"))
-        .setHeight(getAsk("введи рост", Integer.class))
-        .setLocation(new Location.LocationBuilder(getAsk("введи название места", String.class), getAsk("введите икс", Float.class))
-        .setX(getAsk("введите игрик", Integer.class))
-        .setZ(getAsk("введите зет", Double.class)).build()).build();
+                new Person.PersonBuilder(getAsk("введите имя:", String.class),
+                        new Coordinates.CoordinatesBuilder(getAsk("введите икс", Float.class), getAsk("введите игрик", Float.class)).build(),
+                        getAsk("введите вес", Double.class), getCountryAsk("введи страну"))
+                        .setColor(getColorAsk("введи цвет"))
+                        .setHeight(getAsk("введи рост", Integer.class))
+                        .setLocation(new Location.LocationBuilder(getAsk("введи название места", String.class), getAsk("введите икс", Float.class))
+                                .setX(getAsk("введите игрик", Integer.class))
+                                .setZ(getAsk("введите зет", Double.class)).build()).build();
     }
-    public Location MakeMeLocation(){
+
+    public Location MakeMeLocation() {
         return
-        new Location.LocationBuilder(getAsk("", String.class), getAsk("", Float.class))
-        .setX(getAsk("", Integer.class))
-        .setZ(getAsk("", Double.class)).build();
+                new Location.LocationBuilder(getAsk("", String.class), getAsk("", Float.class))
+                        .setX(getAsk("", Integer.class))
+                        .setZ(getAsk("", Double.class)).build();
     }
 
 }
