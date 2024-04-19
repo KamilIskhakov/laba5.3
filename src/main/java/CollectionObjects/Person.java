@@ -7,10 +7,10 @@ import jakarta.xml.bind.annotation.*;
 import java.util.Date;
 
 // если используете джакарту для парсинга в xml, учтите, что порядок геттеров для нанесения ярлыков важен,
-// он какой же, как в xmltype
+// он такой же, как в xmltype, а также в том же порядке напишите сеттеры!
 @XmlRootElement(name = "person")
-@XmlType(propOrder = {"name", "coordinates", "height", "weight", "eyeColor", "nationality", "location", "id","creationDate"})
-public class Person implements Comparable<Location>{
+@XmlType(propOrder = {"name", "coordinates", "height", "weight", "eyeColor", "nationality", "location", "id", "creationDate"})
+public class Person implements Comparable<Location> {
     private String name; //no null
     private Coordinates coordinates; //no null
     private Integer height;
@@ -20,6 +20,7 @@ public class Person implements Comparable<Location>{
     private Location location;
     private Integer id; //no null
     private Date creationDate; //no null
+
     public Person(PersonBuilder personBuilder) {
         name = personBuilder.name;
         coordinates = personBuilder.coordinates;
@@ -29,8 +30,10 @@ public class Person implements Comparable<Location>{
         nationality = personBuilder.nationality;
         location = personBuilder.location;
     }
-    public Person(){
+
+    public Person() {
     }
+
     public static class PersonBuilder {
         //no null
         private String name; //no null
@@ -43,64 +46,78 @@ public class Person implements Comparable<Location>{
         private Location location;
 
         //constructor for required fields
-        public PersonBuilder(String name, Coordinates coordinates, double weight, Country nationality ) {
+        public PersonBuilder(String name, Coordinates coordinates, double weight, Country nationality) {
             this.name = name;
             this.coordinates = coordinates;
             this.weight = weight;
             this.nationality = nationality;
         }
+
         public PersonBuilder setHeight(Integer height) {
             this.height = height;
             return this;
         }
+
         public PersonBuilder setColor(Color eyeColor) {
             this.eyeColor = eyeColor;
             return this;
         }
+
         public PersonBuilder setLocation(Location location) {
             this.location = location;
             return this;
         }
+
         public Person build() {
             return new Person(this);
         }
     }
+
     @XmlElement
     public String getName() {
         return name;
     }
+
     @XmlElement
     public Coordinates getCoordinates() {
         return coordinates;
     }
+
     @XmlElement
     public Integer getHeight() {
         return height;
     }
+
     @XmlElement
     public double getWeight() {
         return weight;
     }
+
     @XmlElement
     public Color getEyeColor() {
         return eyeColor;
     }
+
     @XmlElement
     public Country getNationality() {
         return nationality;
     }
+
     @XmlElement
-    public Location getLocation(){
+    public Location getLocation() {
         return location;
     }
+
     @XmlAttribute
     public Integer getId() {
         return id;
     }
+
     @XmlAttribute
     public Date getCreationDate() {
         return creationDate;
     }
+
     public int compareTo(Person personObj) {
         return id.compareTo(personObj.getId());
 
@@ -139,8 +156,9 @@ public class Person implements Comparable<Location>{
         info += "Человек" + id;
         info += " (добавлен " + creationDate.toString() + " " + creationDate.toString() + ")";
         info += "\n Имя: " + name;
-        info += "\n Местоположение: " + coordinates;
+        info += "\n Координаты: " + coordinates;
         info += "\n Рост: " + height;
+        info += "\n Вес: " + weight;
         info += "\n Цвет глаз: " + eyeColor;
         info += "\n Страна проживания: " + nationality;
         info += "\n Местоположение: " + location;
@@ -155,7 +173,6 @@ public class Person implements Comparable<Location>{
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
-
 
 
     @Override

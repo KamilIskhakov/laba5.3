@@ -61,7 +61,27 @@ public class Location{
     public String getName(){
         return name;
     }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(Float y) {
+        this.y = y;
+    }
+
+    public void setZ(double z) {
+        this.z = z;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String toString() {
-        return "Координата X:" + x + "Координата Y:" + y + "Координата Z:" + z + "Город:" + name;
+        return "Координата X: " + x +"; "+
+               "Координата Y: " + y +"; "+
+               "Координата Z: " + z +"; "+
+               "Город:" + name;
     }
 }

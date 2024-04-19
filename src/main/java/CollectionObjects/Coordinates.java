@@ -42,8 +42,16 @@ public class Coordinates{
         return y;
     }
 
+    public void setX(Float x) {
+        this.x = x;
+    }
+
+    public void setY(Float y) {
+        this.y = y;
+    }
+
     public String toString() {
-        return "X:" + x + " Y:" + y;
+        return "X: " + x +"; " + "Y: " + y;
     }
 
 
