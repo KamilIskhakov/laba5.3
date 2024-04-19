@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 import Service.*;
-
+//не забудь исправить help
 public class Main {
     public static boolean script = false;
     public static TerminalOutputManager terminalOutputManager;
